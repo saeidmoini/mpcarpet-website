@@ -67,7 +67,7 @@
 
 .abou-us .line {
   position: relative;
-  width: 419px;
+  width: 490px;
   height: 4px;
 }
 
@@ -232,7 +232,7 @@
 
 .abou-us .line-2 {
   position: relative;
-  width: 224px;
+  width: 250px;
   height: 4px;
   margin-top: -4px;
   transform: rotate(-180deg);
@@ -523,7 +523,7 @@
 
 .abou-us .interface-search {
   position: absolute;
-  width: 0;
+  width: 20px;
   top: calc(50% - 10px);
   left: 7.08%;
   height: 20px;
@@ -532,7 +532,7 @@
 
 .abou-us .communication-phone {
   position: absolute;
-  width: 0;
+  width: 20px;
   top: calc(50% - 10px);
   left: 9.58%;
   height: 20px;
@@ -540,8 +540,8 @@
 }
 
 .abou-us .group {
-  position: fixed;
-  top: 2510px;
+  position: absolute;
+  top: 2500px;
   left: calc(50% - 720px);
   width: 1444px;
   height: 568px;
