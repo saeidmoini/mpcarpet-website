@@ -554,7 +554,7 @@
   width: 1440px;
   height: 370px;
   overflow: hidden;
-  background-image: url(./img/image-53.png);
+  background-image: url("../img/image 53.png");
   background-size: cover;
   background-position: 50% 50%;
 }
