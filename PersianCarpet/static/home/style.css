@@ -24,10 +24,11 @@
   background: linear-gradient(
     180deg,
     rgba(24, 24, 27, 0) 0%,
-    rgba(24, 24, 27, 1) 100%
+    rgba(24, 24, 27, 0.76) 100%
   );
   position: absolute;
   left: 0;
+  pointer-events: none;
 }
 
 .home-page .group {
@@ -1381,4 +1382,199 @@
   align-self: stretch;
   width: 100%;
   flex: 0 0 auto;
+}
+
+/* Slider style */
+.slider-container {
+  position: relative;
+  width: 937px;
+  height: 669px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slider-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(
+    to top,
+    rgba(24, 24, 27, 0.9) 0%,
+    rgba(24, 24, 27, 0.5) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.slider-controls {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(24, 24, 27, 0.8);
+  padding: 12px 24px;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  color: #ffffff;
+}
+
+.control-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  color: #f4f4f5;
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.control-btn:focus {
+  outline: 2px solid #008684;
+  outline-offset: 2px;
+}
+
+.control-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.slider-dots {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  padding: 0;
+}
+
+.dot.active {
+  background-color: #ffffff;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.dot:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(1.2);
+}
+
+.dot:focus {
+  outline: 2px solid #008684;
+  outline-offset: 2px;
+}
+
+.slide {
+  animation: slideOut 0.5s ease-in-out forwards;
+}
+
+.slide.active {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    width: 100%;
+    height: 400px;
+  }
+
+  .slider-controls {
+    bottom: 20px;
+    padding: 10px 20px;
+    gap: 15px;
+  }
+
+  .control-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .control-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
 }
