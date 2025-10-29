@@ -208,6 +208,7 @@ CMS_LANGUAGES = {
 }
 
 CMS_TEMPLATES = (
+    ('products/index.html', 'Products Us Page Template'),
     ('contact-us/index.html', 'Contact Us Page Template'),
     ('about-us/index.html', 'About Us Page Template'),
     ('home/index.html', 'Home Page Template'),
