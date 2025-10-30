@@ -1,0 +1,30 @@
+# Python & build
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+*.log
+
+# Virtual environments & tools
+venv/
+.env/
+.venv/
+pip-wheel-metadata/
+*.sqlite3
+
+# Django
+static/
+media/
+db.sqlite3
+*.db
+instance/
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
