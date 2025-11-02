@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="{% static 'about-us/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'about-us/styleguid.css' %}" />
     <link rel="stylesheet" href="{% static 'about-us/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}" />
   </head>
   <body>
     <div class="abou-us">
-      <img class="mask-group" src="{% static 'img/Mask group.png' %}" />
+      <img class="mask-group" src="{% static 'img/Mask group 2.png' %}" />
       <div class="frame">
         <div class="div">
           <div class="frame-2">
             <div class="text-wrapper">درباره کارخانه<br />فرش پرشین مشهد</div>
-            <img class="line" src="{% static 'img/Line 8.png' %}" />
+            <img class="line" src="{% static 'img/Line 18.png' %}" />
             <p class="p">تجلی هنر و کیفیت در فرش پرشین مشهد</p>
           </div>
           <div class="frame-3">
@@ -31,7 +32,12 @@
       <img class="img" src="{% static 'img/Frame 83.png' %}" />
       <div class="text-wrapper-4">Awards</div>
       <div class="frame-4">
-        <div class="islamic-pattern"></div>
+        <div class="islamic-pattern">
+          <div class="vector-wrapper">
+            <img class="vector" src="{% static 'img/vector-2.png' %}" />
+            <img class="vector" src="{% static 'img/vector-2.png' %}" />
+          </div>
+        </div>
         <div class="frame-wrapper">
           <div class="frame-5">
             <div class="text-wrapper-5">جوایز و افتخارات ما</div>
@@ -157,10 +163,10 @@
         </div>
       </div>
       <p class="text-wrapper-8">
-        ما جمعی از هنرمندان، طراحان و متخصصان صنعت فرش هستیم که با عشق و شور به
+        <span>ما جمعی از هنرمندان، طراحان و متخصصان صنعت فرش هستیم که با عشق و شور به
         خلق آثار هنری بی‌نظیر در قالب فرش‌های ایرانی مشغول هستیم. کارخانه ما با
         افتخار توانسته است با استفاده از مواد اولیه با کیفیت و تکنولوژی‌های
-        نوین، محصولاتی با بالاترین استانداردهای جهانی تولید کند.<br /><br />کارخانه
+        نوین، محصولاتی با بالاترین استانداردهای جهانی تولید کند.</span><br /><br />کارخانه
         ما با سال‌ها تجربه و سابقه درخشان در صنعت فرش، توانسته است جایگاه
         ویژه‌ای در بازارهای داخلی و خارجی به دست آورد. از زمان تأسیس، ما همواره
         در تلاش بوده‌ایم تا با ارائه محصولات با کیفیت و متنوع، رضایت مشتریان خود
@@ -178,16 +184,18 @@
       </p>
 
       <div class="frame-14">
-        <img class="image-2" src="{% static 'img/image 37.png' %}" />
         <div class="navbar">
-          <div class="text-wrapper-10">تماس با ما</div>
-          <div class="text-wrapper-11">درباره ما</div>
-          <div class="text-wrapper-10">گالری</div>
-          <div class="text-wrapper-10">محصولات</div>
-          <div class="text-wrapper-10">خانه</div>
+          <img class="image-2" src="{% static 'img/image 37.png' %}" />
+          <a class="text-wrapper-10" href="/home">خانه</a>
+          <a class="text-wrapper-10" href="/products">محصولات</a>
+          <a class="text-wrapper-10">گالری</a>
+          <a class="text-wrapper-10 active" href="/about-us">درباره ما</a>
+          <a class="text-wrapper-10" href="/contact-us">تماس با ما</a>
         </div>
-        <img class="interface-search" src="{% static 'img/Search.png' %}" />
-        <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+        <figure class="navbar-icons">
+          <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+          <img class="interface-search" src="{% static 'img/Search.png' %}" />
+        </figure>
       </div>
       <div class="group">
         <div class="frame-15">
@@ -207,7 +215,7 @@
               </div>
             </div>
             <div class="frame-19">
-              <div class="text-wrapper-15">تماس باما</div>
+              <a class="text-wrapper-15" href="/contact-us">تماس باما</a>
             </div>
           </div>
         </div>
@@ -217,10 +225,10 @@
         </p>
         <div class="frame-20">
           <div class="frame-21">
-            <div class="text-wrapper-18">تماس با ما</div>
-            <div class="text-wrapper-10">درباره ما</div>
-            <div class="text-wrapper-10">گالری</div>
-            <div class="text-wrapper-10">محصولات</div>
+            <a class="text-wrapper-18" href="/contact-us">تماس با ما</a>
+            <a class="text-wrapper-10" href="/about-us">درباره ما</a>
+            <a class="text-wrapper-10">گالری</a>
+            <a class="text-wrapper-10" href="/products">محصولات</a>
           </div>
         </div>
       </div>

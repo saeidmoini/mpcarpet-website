@@ -1,13 +1,15 @@
 {% load static %}
 <div class="frame-28">
-  <img class="image-7" src="{% static 'img/image 37.png' %}" />
   <div class="navbar">
-    <a class="text-wrapper-26" href="/contact-us">تماس با ما</a>
-    <a class="text-wrapper-26" href="/about-us">درباره ما</a>
-    <div class="text-wrapper-26">گالری</div>
+    <img class="image-7" src="{% static 'img/image 37.png' %}" />
+    <div class="text-wrapper-26 active">خانه</div>
     <a class="text-wrapper-26" href="/products">محصولات</a>
-    <div class="text-wrapper-26">خانه</div>
+    <div class="text-wrapper-26">گالری</div>
+    <a class="text-wrapper-26" href="/about-us">درباره ما</a>
+    <a class="text-wrapper-26" href="/contact-us">تماس با ما</a>
   </div>
-  <img class="interface-search" src="{% static 'img/Search.png' %}" />
-  <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+  <figure class="navbar-icons">
+    <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+    <img class="interface-search" src="{% static 'img/Search.png' %}" />
+  </figure>
 </div>

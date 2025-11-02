@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{% static 'contact-us/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'contact-us/styleguid.css' %}" />
     <link rel="stylesheet" href="{% static 'contact-us/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}" />
   </head>
   <body>
     <div class="abou-us">
@@ -115,10 +116,10 @@
       <div class="frame-wrapper">
         <div class="frame-12">
           <div class="frame-13">
+            <img class="line" src="{% static 'img/Line 8.png' %}" />
             <p class="text-wrapper-9">
               هر کجا هستید، نزدیک‌ترین نمایندگی کنار شماست
             </p>
-            <img class="line" src="{% static 'img/Line 8.png' %}" />
           </div>
         </div>
       </div>
@@ -219,16 +220,18 @@
         </div>
       </div>
       <div class="frame-21">
-        <img class="image" src="{% static 'img/image 37.png' %}" />
         <div class="navbar">
-          <div class="text-wrapper-16">تماس با ما</div>
-          <div class="text-wrapper-17">درباره ما</div>
-          <div class="text-wrapper-16">گالری</div>
-          <div class="text-wrapper-16">محصولات</div>
-          <div class="text-wrapper-16">خانه</div>
+          <img class="image" src="{% static 'img/image 37.png' %}" />
+          <a class="text-wrapper-16" href="/home">خانه</a>
+          <a class="text-wrapper-16" href="/products">محصولات</a>
+          <a class="text-wrapper-16">گالری</a>
+          <a class="text-wrapper-16" href="/about-us">درباره ما</a>
+          <a class="text-wrapper-16 active" href="/contact-us">تماس با ما</a>
         </div>
-        <img class="interface-search" src="{% static 'img/Search.png' %}" />
-        <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+        <figure class="navbar-icons">
+          <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+          <img class="interface-search" src="{% static 'img/Search.png' %}" />
+        </figure>
       </div>
       <div class="group-4">
         <div class="frame-22">
@@ -258,10 +261,10 @@
         </p>
         <div class="frame-27">
           <div class="frame-28">
-            <div class="text-wrapper-24">تماس با ما</div>
-            <div class="text-wrapper-16">درباره ما</div>
-            <div class="text-wrapper-16">گالری</div>
-            <div class="text-wrapper-16">محصولات</div>
+            <a class="text-wrapper-24" href="/contact-us">تماس با ما</a>
+            <a class="text-wrapper-16" href="/about-us">درباره ما</a>
+            <a class="text-wrapper-16">گالری</a>
+            <a class="text-wrapper-16" href="/products">محصولات</a>
           </div>
         </div>
       </div>

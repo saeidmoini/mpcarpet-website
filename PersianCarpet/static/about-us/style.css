@@ -2,7 +2,8 @@
   background-color: #18181b;
   overflow: hidden;
   width: 100%;
-  min-width: 1440px;
+  min-width: 1200px;
+  max-width: 1440px;
   min-height: 3102px;
   position: relative;
 }
@@ -10,7 +11,7 @@
 .abou-us .mask-group {
   position: absolute;
   top: 80px;
-  left: 829px;
+  left: 735px;
   width: 608px;
   height: 559px;
 }
@@ -29,7 +30,7 @@
 .abou-us .div {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   gap: 28px;
   position: relative;
   align-self: stretch;
@@ -40,7 +41,7 @@
 .abou-us .frame-2 {
   display: flex;
   flex-direction: column;
-  width: 588px;
+  width: 419px;
   align-items: flex-end;
   gap: 8px;
   position: relative;
@@ -50,7 +51,7 @@
 
 .abou-us .text-wrapper {
   position: relative;
-  align-self: stretch;
+  /* align-self: stretch; */
   margin-top: -1px;
   font-family: var(--bold-h2-font-family);
   font-weight: var(--bold-h2-font-weight);
@@ -67,13 +68,14 @@
 
 .abou-us .line {
   position: relative;
-  width: 490px;
+  width: 419px;
   height: 4px;
+  margin: 8px 0;
 }
 
 .abou-us .p {
   position: relative;
-  align-self: stretch;
+  /* align-self: stretch; */
   font-family: var(--regular-h4-font-family);
   font-weight: var(--regular-h4-font-weight);
   color: #d4d4d8;
@@ -94,13 +96,13 @@
   gap: 24px;
   position: relative;
   align-self: stretch;
-  width: 100%;
+  width: 474px;
   flex: 0 0 auto;
 }
 
 .abou-us .text-wrapper-2 {
   position: relative;
-  align-self: stretch;
+  /* align-self: stretch; */
   margin-top: -1px;
   font-family: var(--regular-sub1-font-family);
   font-weight: var(--regular-sub1-font-weight);
@@ -190,6 +192,15 @@
   background-size: 100% 100%;
 }
 
+.abou-us .islamic-pattern .vector-wrapper img {
+  width: 100%;
+}
+
+.abou-us .islamic-pattern .vector-wrapper img:last-of-type {
+  position: relative;
+  left: -31%;
+}
+
 .abou-us .frame-wrapper {
   display: inline-flex;
   flex-direction: column;
@@ -197,7 +208,7 @@
   gap: 24px;
   position: absolute;
   top: 30px;
-  left: 128px;
+  left: 165px;
 }
 
 .abou-us .frame-5 {
@@ -261,12 +272,12 @@
 .abou-us .frame-6 {
   display: flex;
   flex-direction: column;
-  width: 1236px;
+  width: 100%;
   align-items: center;
   gap: 64px;
   position: absolute;
   top: 1360px;
-  left: 102px;
+  left: 0;
 }
 
 .abou-us .frame-7 {
@@ -275,8 +286,8 @@
   align-items: flex-start;
   gap: 40px;
   position: relative;
-  align-self: stretch;
-  width: 100%;
+  /* align-self: stretch; */
+  width: max-content;
   flex: 0 0 auto;
 }
 
@@ -337,7 +348,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  align-self: stretch;
+  /* align-self: stretch; */
   margin-top: -1px;
   font-family: var(--bold-sub1-font-family);
   font-weight: var(--bold-sub1-font-weight);
@@ -427,11 +438,16 @@
   font-size: var(--regular-h6-font-size);
   line-height: var(--regular-h6-line-height);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   letter-spacing: var(--regular-h6-letter-spacing);
   direction: rtl;
   font-style: var(--regular-h6-font-style);
+}
+
+.abou-us .text-wrapper-8 span {
+  margin-bottom: 40px;
 }
 
 .abou-us .text-wrapper-9 {
@@ -454,22 +470,27 @@
 }
 
 .abou-us .frame-14 {
+  direction: rtl;
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   top: 0;
   left: 0;
-  width: 1440px;
+  width: 100%;
   height: 104px;
-  backdrop-filter: blur(2px) brightness(100%);
-  -webkit-backdrop-filter: blur(2px) brightness(100%);
+  padding: 0 102px;
+  /* backdrop-filter: blur(2px) brightness(100%); */
+  /* -webkit-backdrop-filter: blur(2px) brightness(100%); */
 }
 
 .abou-us .image-2 {
-  top: calc(50% - 32px);
-  left: calc(50% + 500px);
+  /* top: calc(50% - 32px);
+  left: calc(50% + 500px); */
   width: 118px;
   height: 64px;
   aspect-ratio: 1.85;
-  position: absolute;
+  /* position: absolute; */
   object-fit: cover;
 }
 
@@ -478,9 +499,9 @@
   align-items: center;
   justify-content: flex-end;
   gap: 24px;
-  position: absolute;
+  /* position: absolute;
   top: calc(50% - 13px);
-  right: 252px;
+  right: 252px; */
 }
 
 .abou-us .text-wrapper-10 {
@@ -500,9 +521,22 @@
   white-space: nowrap;
   direction: rtl;
   font-style: var(--bold-sub2-font-style);
+  transition: color .3s ease-in-out;
+  -webkit-transition: color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out;
+  -ms-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
 }
 
-.abou-us .text-wrapper-11 {
+.abou-us .text-wrapper-10.active {
+  color: var(--primary-300);
+}
+
+.abou-us .text-wrapper-10:hover {
+  color: var(--primary-300);
+}
+
+/* .abou-us .text-wrapper-11 {
   position: relative;
   display: flex;
   align-items: center;
@@ -519,22 +553,23 @@
   white-space: nowrap;
   direction: rtl;
   font-style: var(--bold-sub2-font-style);
-}
+} */
 
 .abou-us .interface-search {
-  position: absolute;
+  /* position: absolute; */
   width: 20px;
-  top: calc(50% - 10px);
-  left: 7.08%;
+  /* top: calc(50% - 10px);
+  left: 7.08%; */
   height: 20px;
   aspect-ratio: 1;
+  margin-right: 16px;
 }
 
 .abou-us .communication-phone {
-  position: absolute;
+  /* position: absolute; */
   width: 20px;
-  top: calc(50% - 10px);
-  left: 9.58%;
+  /* top: calc(50% - 10px);
+  left: 9.58%; */
   height: 20px;
   aspect-ratio: 1;
 }
@@ -795,4 +830,13 @@
   letter-spacing: var(--bold-sub2-letter-spacing);
   direction: rtl;
   font-style: var(--bold-sub2-font-style);
+  transition: color .3s ease-in-out;
+  -webkit-transition: color .3s ease-in-out;
+  -moz-transition: color .3s ease-in-out;
+  -ms-transition: color .3s ease-in-out;
+  -o-transition: color .3s ease-in-out;
+}
+
+.abou-us .text-wrapper-18:hover {
+  color: var(--primary-300);
 }
