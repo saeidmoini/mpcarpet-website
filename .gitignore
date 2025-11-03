@@ -13,7 +13,8 @@ pip-wheel-metadata/
 *.sqlite3
 
 # Django
-static/
+static/*
+!static/fonts
 media/
 db.sqlite3
 *.db
