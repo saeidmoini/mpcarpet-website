@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "IRANYekanX-ExtraBold";
+    src: url(./IRYekan/Iranyekan-extrabold.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Light";
+    src: url(./IRYekan/Iranyekan-light.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Regular";
+    src: url(./IRYekan/Iranyekan.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX";
+    src: url(./IRYekan/Iranyekan.ttf);
+}
+@font-face {
+    font-family: "IRANYekanWeb";
+    src: url(./IRYekan/Iranyekan.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Black";
+    src: url(./IRYekan/Iranyekan-black.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Bold";
+    src: url(./IRYekan/Iranyekan-bold.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-ExtraBlack";
+    src: url(./IRYekan/Iranyekan-extrablack.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Medium", "IRANYekanX-DemiBold";
+    src: url(./IRYekan/Iranyekan-medium.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-DemiBold";
+    src: url(./IRYekan/Iranyekan-medium.ttf);
+}
+@font-face {
+    font-family: "IRANYekanX-Thin";
+    src: url(./IRYekan/Iranyekan-thin.ttf);
+}
+* {
+    font-family: "IRANYekanX-Regular";
+}
