@@ -11,7 +11,8 @@ admin.autodiscover()
 
 urlpatterns = [
     path("sitemap.xml", sitemap, {"sitemaps": {"cmspages": CMSSitemap}}),
-    path('', TemplateView.as_view(template_name='home/index.html'), name='home'),
+    path('', TemplateView.as_view(template_name='home/m_index.html'), name='home'),
+    path('products/', TemplateView.as_view(template_name='products/index.html'), name='products'),
 ]
 
 

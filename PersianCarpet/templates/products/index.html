@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="{% static 'products/globals.css' %}" />
     <link rel="stylesheet" href="{% static 'products/styleguid.css' %}" />
     <link rel="stylesheet" href="{% static 'products/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}" />
   </head>
   <body>
     <div class="product">
-      <img class="frame" src="img/frame-59.svg" />
+      <img class="frame" src="{% static "img/Frame-59.png" %}"/>
       <div class="text-wrapper">ARTISTRY</div>
       <div class="div">GALLERY</div>
       <div class="text-wrapper-2">AGENTS</div>
@@ -57,8 +58,8 @@
             </div>
           </div>
           <div class="frame-6">
-            <p class="text-wrapper-7">ریشه در اصالت،<br />نگاه به آینده</p>
             <img class="line-2" src="{% static 'img/Line 8.png' %}" />
+            <p class="text-wrapper-7">ریشه در اصالت،<br />نگاه به آینده</p>
           </div>
         </div>
         <div class="image-wrapper">
@@ -69,8 +70,8 @@
         <div class="islamic-pattern-2"></div>
         <div class="frame-8">
           <div class="frame-9">
-            <p class="text-wrapper-8">محصولاتی که در انتظار نگاه شماست</p>
             <img class="line-2" src="{% static 'img/Line 8.png' %}" />
+            <p class="text-wrapper-8">محصولاتی که در انتظار نگاه شماست</p>
           </div>
         </div>
         <div class="islamic-pattern-3"></div>
@@ -84,10 +85,10 @@
         <div class="frame-11">
           <div class="frame-12">
             <div class="frame-9">
+              <img class="line-3" src="{% static 'img/Line 8.png' %}" />
               <p class="text-wrapper-9">
                 هر کجا هستید، نزدیک‌ترین نمایندگی کنار شماست
               </p>
-              <img class="line-3" src="{% static 'img/Line 8.png' %}" />
             </div>
           </div>
           <p class="text-wrapper-10">
@@ -124,8 +125,7 @@
                 <div class="text-wrapper-15">تراکم ۹۶۰</div>
                 <img class="line-5" src="{% static 'img/Line 8.png' %}" />
                 <p class="div-2">
-                  <span class="span">۳۰۰ ش</span>
-                  <span class="text-wrapper-16">انه</span>
+                  <span class="text-wrapper-16">شانه ۳۰۰</span>
                 </p>
               </div>
             </div>
@@ -195,16 +195,18 @@
         <img class="polygon-3" src="{% static 'img/Polygon 3.png' %}" />
       </div>
       <div class="frame-22">
-        <img class="image-5" src="{% static 'img/image 37.png' %}" />
         <div class="navbar">
-          <a class="text-wrapper-19" href="/contact-us">تماس با ما</a>
+          <img class="image-5" src="{% static 'img/image 37.png' %}" />
+          <a class="text-wrapper-19" href="/">خانه</a>
+          <a class="text-wrapper-19 active" href="/products">محصولات</a>
+          <a class="text-wrapper-19" href="">گالری</a>
           <a class="text-wrapper-19" href="/about-us">درباره ما</a>
-          <div class="text-wrapper-19">گالری</div>
-          <div class="text-wrapper-19">محصولات</div>
-          <a class="text-wrapper-20" href="/">خانه</a>
+          <a class="text-wrapper-19" href="/contact-us">تماس با ما</a>
         </div>
-        <img class="interface-search" src="{% static 'img/Search.png' %}" />
-        <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+        <figure class="navbar-icons">
+          <img class="communication-phone" src="{% static 'img/Phone.png' %}" />
+          <img class="interface-search" src="{% static 'img/Search.png' %}" />
+      </figure>
       </div>
       <div class="group-6">
         <div class="frame-23">

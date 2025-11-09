@@ -1,0 +1,39 @@
+// variables
+$font: "IRANYekanX-Regular";
+$font-bold: "IRANYekanX-Bold";
+$font-light: "IRANYekanX-Light";
+$font-medium: "IRANYekanX-Medium";
+$font-extrabold: "IRANYekanX-ExtraBold";
+$font-thin: "IRANYekanX-Thin";
+* {
+    box-sizing: border-box;
+    font-family: $font;
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+    background-color: var(--bg-dark);
+}
+.container {
+    width: 90%;
+    max-width: 144rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+a {
+    text-decoration: none;
+}
+ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

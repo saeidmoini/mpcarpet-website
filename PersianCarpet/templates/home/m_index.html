@@ -1,0 +1,527 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>فرش پرشین مشهد</title>
+        <link
+        rel="shortcut icon"
+        href="{% static 'imgs/logo.png' %}"
+        type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'global/global.css' %}">
+        <link rel="stylesheet" href="{% static 'global/styleguide.css' %}">
+        <link rel="stylesheet" href="{% static 'home/m_styles.css' %}">
+        <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+        {% comment %} swiper styles {% endcomment %}
+        <style>
+            .gallery-swiper-button {
+                position: relative;
+                width: 6.4rem;
+                height: 6.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: white;
+                inset: 0;
+                margin: 0;
+            }
+            .gallery-swiper-button svg {
+                width: 1rem;
+                height: 1.8rem;
+            }
+            .swiper-button-disabled {
+                opacity: 1 !important;
+            }
+        </style>
+    </head>
+    <body dir="rtl">
+        {% comment %} header {% endcomment %}
+        <header>
+            {% include "components/layouts/navbar.html" %}
+            <div class="hero">
+                <div class="hero-video">
+                    <video id="heroVideo" src="{% static 'videos/30-seconds-video.mp4' %}" autoplay muted playsinline></video>
+                </div>
+            </div>  
+        </header>
+        {% comment %} gallery section {% endcomment %}
+        <section class="gallery">
+            <div class="gallery-typo-art">
+                <img src="{% static 'imgs/gallery-typo.png' %}" alt="gallery art">
+            </div>
+            <div class="background-art">
+                <h2 class="gallery-title">
+                    نگاهی به آثار<br> هنری ما
+                </h2>
+            </div>
+            <ul class="tab-button-list">
+                <li class="tab-button">
+                    <button class="tablinks" onclick="openTab(event, 'swiper1')" id="defaultOpen">۳۰۰ شانه</button>
+                </li>
+                <li class="tab-button">
+                    <button class="tablinks" onclick="openTab(event, 'swiper2')">۷۰۰ شانه</button>
+                </li>
+                <li class="tab-button">
+                    <button class="tablinks" onclick="openTab(event, 'swiper3')">۱۲۰۰ شانه</button>
+                </li>
+            </ul>
+            {% comment %} gallery swiper {% endcomment %}
+            <div id="swiper1" class="tabcontent">
+                <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۳۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="swiper2" class="tabcontent">
+                <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper1.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۷۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div id="swiper3" class="tabcontent">
+                <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="gallery-card">
+                            <figure class="gallery-img">
+                                <img src="{% static 'imgs/gallery-swiper2.png' %}" alt="gallery image">
+                            </figure>
+                            <h3 class="gallery-card-title">فرش آذین</h3>
+                            <ul class="gallery-card-list">
+                                <li class="gallery-card-item">۱۲۰۰ شانه</li>
+                                <li class="gallery-card-item">تراکم ۹۶۰</li>
+                                <li class="gallery-card-item">پلی پروپیلین</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            </div>
+            
+            <div class="gallery-swiper-navs">
+                <div class="swiper-button-next gallery-swiper-button"></div>
+                <div class="swiper-button-prev gallery-swiper-button"></div>
+            </div>
+            <a href="#" class="gallery-cta">مشاهده همه</a>
+        </section>
+        {% comment %} artistry section {% endcomment %}
+        <section class="artistry">
+            <div style="position: relative; height: 100%" class="container">
+                <div class="background-art">
+                    <h2 class="gallery-title">
+                        ریشه در اصالت، <br> نگاه به آینده
+                    </h2>
+                </div>
+                <div class="gallery-typo-art">
+                    <img src="{% static 'imgs/artistry-typo.png' %}" alt="gallery art">
+                </div>
+                <figure class="artistry-img">
+                    <img src="{% static 'imgs/artistry-carpet.png' %}" alt="artistry-carpet">
+                </figure>
+                <div class="artistry-typo">
+                    <p>«ما باور داریم که فرش تنها یک پوشش برای زمین نیست، بلکه تابلویی از هنر، فرهنگ و هویت است. مجموعه ما با سال‌ها تجربه در عرضه‌ی فرش‌های اصیل و مدرن، تلاش می‌کند تا ترکیبی از زیبایی، کیفیت و اصالت را به خانه‌های شما بیاورد. هر فرش، داستانی دارد؛ داستانی از هنر دست یا طراحی مدرن که ماندگار و منحصر به فرد است. هدف ما این است که هر خانه با انتخاب شما، جلوه‌ای تازه و باشکوه پیدا کند.</p>
+                    <a href="#" class="artistry-cta">ادامه داستان ما</a>
+                </div>
+            </div>
+        </section>
+        {% comment %} agents section {% endcomment %}
+        <section class="agents-section">
+            <div style="position: relative; height: 100%" class="container">
+                <figure class="agents-map"><img src="{% static 'imgs/agents-map.png' %}" alt="agents map"></figure>
+                <div class="background-art">
+                    <h2 class="gallery-title">
+                        هر کجا هستید، نزدیک‌ترین نمایندگی کنار شماست
+                    </h2>
+                </div>
+                <div class="gallery-typo-art">
+                    <img src="{% static 'imgs/agents-typo.png' %}" alt="gallery art">
+                </div>
+                <div class="artistry-typo">
+                    <p>فرش پرشین را از معتبرترین نمایندگی‌های ما در شهرهای مختلف ایران تهیه کنید.</p>
+                    <a href="#" class="artistry-cta">مشاهده نمایندگی‌ها</a>
+                </div>
+            </div>
+        </section>
+        {% include "components/layouts/footer.html" %}
+        {% comment %} scripts {% endcomment %}
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+        <script>
+                const video = document.getElementById('heroVideo');
+                const body = document.body;
+                let isVideoEnded = false;
+                let scrollPos = 0;
+
+                // Disable scroll until video ends
+                window.addEventListener('wheel', (e) => {
+                if (isVideoEnded) return; // allow scroll after video ends
+                e.preventDefault();
+
+                // scroll direction
+                scrollPos += e.deltaY * 0.0008; // adjust sensitivity
+                scrollPos = Math.min(Math.max(scrollPos, 0), 1);
+
+                if (video.duration) {
+                    video.currentTime = scrollPos * video.duration;
+                }
+                }, { passive: false });
+
+                // When video ends, unlock scroll
+                video.addEventListener('ended', () => {
+                isVideoEnded = true;
+                document.documentElement.style.overflow = 'auto';
+                body.style.overflow = 'auto';
+                window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                });
+
+                // Fallback: detect end manually (since video might not actually play full)
+                video.addEventListener('timeupdate', () => {
+                if (!isVideoEnded && video.currentTime >= video.duration - 0.1) {
+                    isVideoEnded = true;
+                    document.documentElement.style.overflow = 'auto';
+                    body.style.overflow = 'auto';
+                    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+                }
+                });
+        </script>
+        <script>
+        const swiper = new Swiper('.swiper', {
+            slidesPerView: 4,
+            spaceBetween: 25,
+            direction: 'horizontal',
+            loop: false,
+            navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+            },
+        });
+
+
+        // === GALLERY SCROLL REVEAL CONTROL ===
+document.addEventListener("DOMContentLoaded", () => {
+  const gallerySection = document.querySelector(".gallery");
+  if (!gallerySection) return;
+
+  const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
+  const slides = swiperContainer.querySelectorAll(".swiper-slide");
+  let shownSlides = 0;
+  let animationStarted = false;
+  let lockScroll = false;
+  let touchStartY = 0;
+
+  // Hide slides initially
+  slides.forEach((slide) => slide.classList.add("hidden-slide"));
+
+  const showNextSlide = () => {
+    if (shownSlides < 4) {
+      slides[shownSlides].classList.add("show-slide");
+      shownSlides++;
+      if (shownSlides === 4) unlockPageScroll();
+    }
+  };
+
+  const lockPageScroll = () => {
+    lockScroll = true;
+    document.body.style.overflow = "hidden";
+  };
+
+  const unlockPageScroll = () => {
+    lockScroll = false;
+    document.body.style.overflow = "";
+    removeListeners();
+  };
+
+  const handleWheel = (e) => {
+    if (!lockScroll) return;
+    e.preventDefault();
+    if (e.deltaY > 0) showNextSlide();
+  };
+
+  const handleTouchStart = (e) => {
+    if (!lockScroll) return;
+    touchStartY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!lockScroll) return;
+    const diff = touchStartY - e.touches[0].clientY;
+    if (diff > 40) {
+      showNextSlide();
+      touchStartY = e.touches[0].clientY;
+    }
+    e.preventDefault();
+  };
+
+  const addListeners = () => {
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: false });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
+  };
+
+  const removeListeners = () => {
+    window.removeEventListener("wheel", handleWheel);
+    window.removeEventListener("touchstart", handleTouchStart);
+    window.removeEventListener("touchmove", handleTouchMove);
+  };
+
+  // Start reveal only when gallery center is at viewport center
+  const checkSectionPosition = () => {
+    const rect = gallerySection.getBoundingClientRect();
+    const sectionCenter = rect.top + rect.height / 2;
+    const viewportCenter = window.innerHeight / 2;
+    if (!animationStarted && Math.abs(sectionCenter - viewportCenter) < 150) {
+      animationStarted = true;
+      lockPageScroll();
+      addListeners();
+    }
+  };
+
+  window.addEventListener("scroll", checkSectionPosition);
+  checkSectionPosition(); // initial check
+});
+
+        </script>
+        <script>
+            document.getElementById("defaultOpen").click();
+            function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+        </script>
+        <script src="{% static 'js/slider.js' %}"></script>
+    </body>
+</html>
