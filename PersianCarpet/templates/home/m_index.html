@@ -420,87 +420,87 @@
 
 
         // === GALLERY SCROLL REVEAL CONTROL ===
-document.addEventListener("DOMContentLoaded", () => {
-  const gallerySection = document.querySelector(".gallery");
-  if (!gallerySection) return;
+        document.addEventListener("DOMContentLoaded", () => {
+        const gallerySection = document.querySelector(".gallery");
+        if (!gallerySection) return;
 
-  const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
-  const slides = swiperContainer.querySelectorAll(".swiper-slide");
-  let shownSlides = 0;
-  let animationStarted = false;
-  let lockScroll = false;
-  let touchStartY = 0;
+        const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
+        const slides = swiperContainer.querySelectorAll(".swiper-slide");
+        let shownSlides = 0;
+        let animationStarted = false;
+        let lockScroll = false;
+        let touchStartY = 0;
 
-  // Hide slides initially
-  slides.forEach((slide) => slide.classList.add("hidden-slide"));
+        // Hide slides initially
+        slides.forEach((slide) => slide.classList.add("hidden-slide"));
 
-  const showNextSlide = () => {
-    if (shownSlides < 4) {
-      slides[shownSlides].classList.add("show-slide");
-      shownSlides++;
-      if (shownSlides === 4) unlockPageScroll();
-    }
-  };
+        const showNextSlide = () => {
+            if (shownSlides < 4) {
+            slides[shownSlides].classList.add("show-slide");
+            shownSlides++;
+            if (shownSlides === 4) unlockPageScroll();
+            }
+        };
 
-  const lockPageScroll = () => {
-    lockScroll = true;
-    document.body.style.overflow = "hidden";
-  };
+        const lockPageScroll = () => {
+            lockScroll = true;
+            document.body.style.overflow = "hidden";
+        };
 
-  const unlockPageScroll = () => {
-    lockScroll = false;
-    document.body.style.overflow = "";
-    removeListeners();
-  };
+        const unlockPageScroll = () => {
+            lockScroll = false;
+            document.body.style.overflow = "";
+            removeListeners();
+        };
 
-  const handleWheel = (e) => {
-    if (!lockScroll) return;
-    e.preventDefault();
-    if (e.deltaY > 0) showNextSlide();
-  };
+        const handleWheel = (e) => {
+            if (!lockScroll) return;
+            e.preventDefault();
+            if (e.deltaY > 0) showNextSlide();
+        };
 
-  const handleTouchStart = (e) => {
-    if (!lockScroll) return;
-    touchStartY = e.touches[0].clientY;
-  };
+        const handleTouchStart = (e) => {
+            if (!lockScroll) return;
+            touchStartY = e.touches[0].clientY;
+        };
 
-  const handleTouchMove = (e) => {
-    if (!lockScroll) return;
-    const diff = touchStartY - e.touches[0].clientY;
-    if (diff > 40) {
-      showNextSlide();
-      touchStartY = e.touches[0].clientY;
-    }
-    e.preventDefault();
-  };
+        const handleTouchMove = (e) => {
+            if (!lockScroll) return;
+            const diff = touchStartY - e.touches[0].clientY;
+            if (diff > 40) {
+            showNextSlide();
+            touchStartY = e.touches[0].clientY;
+            }
+            e.preventDefault();
+        };
 
-  const addListeners = () => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-  };
+        const addListeners = () => {
+            window.addEventListener("wheel", handleWheel, { passive: false });
+            window.addEventListener("touchstart", handleTouchStart, { passive: false });
+            window.addEventListener("touchmove", handleTouchMove, { passive: false });
+        };
 
-  const removeListeners = () => {
-    window.removeEventListener("wheel", handleWheel);
-    window.removeEventListener("touchstart", handleTouchStart);
-    window.removeEventListener("touchmove", handleTouchMove);
-  };
+        const removeListeners = () => {
+            window.removeEventListener("wheel", handleWheel);
+            window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchmove", handleTouchMove);
+        };
 
-  // Start reveal only when gallery center is at viewport center
-  const checkSectionPosition = () => {
-    const rect = gallerySection.getBoundingClientRect();
-    const sectionCenter = rect.top + rect.height / 2;
-    const viewportCenter = window.innerHeight / 2;
-    if (!animationStarted && Math.abs(sectionCenter - viewportCenter) < 150) {
-      animationStarted = true;
-      lockPageScroll();
-      addListeners();
-    }
-  };
+        // Start reveal only when gallery center is at viewport center
+        const checkSectionPosition = () => {
+            const rect = gallerySection.getBoundingClientRect();
+            const sectionCenter = rect.top + rect.height / 2;
+            const viewportCenter = window.innerHeight / 2;
+            if (!animationStarted && Math.abs(sectionCenter - viewportCenter) < 150) {
+            animationStarted = true;
+            lockPageScroll();
+            addListeners();
+            }
+        };
 
-  window.addEventListener("scroll", checkSectionPosition);
-  checkSectionPosition(); // initial check
-});
+        window.addEventListener("scroll", checkSectionPosition);
+        checkSectionPosition(); // initial check
+        });
 
         </script>
         <script>
