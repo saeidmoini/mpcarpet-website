@@ -9,6 +9,22 @@
 <link rel="stylesheet" href="{% static 'components/layouts/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'components/layouts/footer.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"/>
+{% comment %} this styles doesn't work on external css file. keep it here. {% endcomment %}
+<style>
+    .gallery-swiper-button {
+    position: relative;
+    width: 6.4rem;
+    height: 6.4rem;
+    inset: unset;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+</style>
 {% endblock %}
 
 {% block body_attrs %} dir="rtl" class="page-home-mobile"{% endblock %}
@@ -360,7 +376,7 @@
         e.preventDefault();
 
         // scroll direction
-        scrollPos += e.deltaY * 0.0008; // adjust sensitivity
+        scrollPos += e.deltaY * 0.0003; // adjust sensitivity
         scrollPos = Math.min(Math.max(scrollPos, 0), 1);
 
         if (video.duration) {

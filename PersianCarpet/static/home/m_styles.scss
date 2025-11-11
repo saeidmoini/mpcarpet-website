@@ -413,7 +413,7 @@ $font-thin: "IRANYekanX-Thin";
 .gallery-swiper-navs {
     position: absolute;
     bottom: -6.5rem;
-    right: 11%;
+    right: 10.2%;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.23);
@@ -423,11 +423,19 @@ $font-thin: "IRANYekanX-Thin";
     position: relative;
     width: 6.4rem;
     height: 6.4rem;
+    inset: unset;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 .gallery-cta {
     position: absolute;
     bottom: 0;
-    right: 15.5%;
+    right: 15%;
     padding: 1.6rem 3.3rem;
     background-color: white;
     color: var(--accent-main);
@@ -507,8 +515,9 @@ $font-thin: "IRANYekanX-Thin";
         }
     }
     .artistry-typo {
-        bottom: 35%;
+        bottom: 30%;
         right: 0;
+        width: 35%;
     }
 }
 
