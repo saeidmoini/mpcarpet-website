@@ -1,3 +1,21 @@
+.page-home-mobile {
+  width: min(100%, 1440px);
+  margin: 0 auto;
+  background-color: #18181b;
+  color: #f4f4f5;
+  min-height: 100vh;
+}
+
+.page-home-mobile header,
+.page-home-mobile section,
+.page-home-mobile footer {
+  position: relative;
+}
+
+.page-home-mobile header {
+  padding-top: 10.4rem;
+}
+
 .hero {
   position: relative;
   display: grid;
