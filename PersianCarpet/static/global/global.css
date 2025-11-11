@@ -34,4 +34,12 @@ ul, ol {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+body.page-home,
+body.page-home-mobile,
+body.page-about,
+body.page-contact,
+body.page-products {
+  overflow-x: hidden;
 }/*# sourceMappingURL=global.css.map */

@@ -69,6 +69,24 @@ nav {
   height: 100%;
 }
 
+@media screen and (max-width: 1024px) {
+  .navbar {
+    padding: 16px 0;
+  }
+
+  .navbar-item {
+    margin-left: 1.6rem;
+  }
+
+  .navbar-item:nth-of-type(1) {
+    margin-left: 2.4rem;
+  }
+
+  .navbar-list:last-of-type {
+    gap: 1.2rem;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .toggle-sidebar {
     display: unset;

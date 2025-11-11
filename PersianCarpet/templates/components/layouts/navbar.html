@@ -1,58 +1,62 @@
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'components/layouts/navbar.css' %}"></head>
-    <nav>
-        <div class="container">
-            <div class="navbar">
-                <button class="toggle-sidebar" id="toggleSidebar"><img src="{% static 'imgs/icons/menu.svg' %}" alt=""></button>
-                <ul class="navbar-list nav-link-list" id="sidebar">
-                    {% comment %} <span style="top: 1rem; left: 1rem;" class="toggle-sidebar" id="closeSidebar">❌</span> {% endcomment %}
-                    <li class="navbar-item">
-                        <a href="" class="navbar-link logo">
-                            <img src="{% static 'imgs/logo.png' %}" alt="navbar logo"></a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="" class="navbar-link">خانه</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="" class="navbar-link">محصولات</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="" class="navbar-link">گالری</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="" class="navbar-link">درباره ما</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a href="" class="navbar-link">تماس با ما</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-list">
-                        <li class="navbar-icon-item">
-                            <a href="" class="navbar-icon">
-                                <img src="{% static 'imgs/icons/search.svg' %}" alt="search icon"></a>
-                            </li>
-                            <li class="navbar-icon-item">
-                                <a href="" class="navbar-icon">
-                                    <img src="{% static 'imgs/icons/phone.svg' %}" alt="phone icon"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-                <script>
-                    const toggleBtn = document.getElementById("toggleSidebar");
-                    const sidebar = document.getElementById("sidebar");
-
-                    toggleBtn.addEventListener("click", (e) => {
-                        e.preventDefault();
-                        sidebar
-                            .classList
-                            .toggle("active");
-                    });
-                    document.addEventListener("click", (e) => {
-  if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
-    sidebar.classList.remove("active");
-  }
-});
-                </script>
+<nav class="navbar-wrapper">
+    <div class="container">
+        <div class="navbar">
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <img src="{% static 'imgs/icons/menu.svg' %}" alt="menu icon">
+            </button>
+            <ul class="navbar-list nav-link-list" id="sidebar">
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}" class="navbar-link logo">
+                        <img src="{% static 'imgs/logo.png' %}" alt="navbar logo">
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}" class="navbar-link">خانه</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'products' %}" class="navbar-link">محصولات</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}#gallery" class="navbar-link">گالری</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'about' %}" class="navbar-link">درباره ما</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'contact' %}" class="navbar-link">تماس با ما</a>
+                </li>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-icon-item">
+                    <a href="{% url 'products' %}" class="navbar-icon">
+                        <img src="{% static 'imgs/icons/search.svg' %}" alt="search icon">
+                    </a>
+                </li>
+                <li class="navbar-icon-item">
+                    <a href="tel:+985135411567" class="navbar-icon">
+                        <img src="{% static 'imgs/icons/phone.svg' %}" alt="phone icon">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script>
+    (function () {
+        const toggleBtn = document.getElementById("toggleSidebar");
+        const sidebar = document.getElementById("sidebar");
+        if (!toggleBtn || !sidebar) {
+            return;
+        }
+        toggleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle("active");
+        });
+        document.addEventListener("click", (e) => {
+            if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                sidebar.classList.remove("active");
+            }
+        });
+    })();
+</script>

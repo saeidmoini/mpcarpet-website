@@ -1,25 +1,22 @@
 {% load static %}
-<head>
-    <link rel="stylesheet" href="{% static 'components/layouts/footer.css' %}">
-</head>
 <footer>
     <div class="footer-content">
         <div class="footer-overlay"></div>
         <figure class="footer-logo"><img src="{% static 'imgs/footer-logo.png' %}" alt="footer logo"></figure>
-        <span class="footer-number">۰۵۱۳-۵۴۱۱-۵۶۷</span>
-        <span class="footer-email">info@farshpersianmashhad.com</span>
-        <span class="footer-address">مشهد، شهرک صنعتی طوس، فاز یک، بلوار تلاش شمالی، تلاش شمالی ۵/۴</span>
-        <a href="#" class="footer-cta">تماس با ما</a>
+        <span class="footer-number">{% include "components/fragments/contact_phone.html" %}</span>
+        <span class="footer-email">{% include "components/fragments/contact_email.html" %}</span>
+        <span class="footer-address">{% include "components/fragments/contact_address.html" %}</span>
+        <a href="{% url 'contact' %}" class="footer-cta">تماس با ما</a>
     </div>
     <div class="footer-copyright">
         <figure class="footer-typo">
             <img src="{% static 'imgs/footer-typo.png' %}" alt="footer typo">
         </figure>
         <ul class="footer-copyright-list">
-            <li class="footer-copyright-item"><a href="#">محصولات</a></li>
-            <li class="footer-copyright-item"><a href="#">گالری</a></li>
-            <li class="footer-copyright-item"><a href="#">درباره ما</a></li>
-            <li class="footer-copyright-item"><a href="#">تماس با ما</a></li>
+            <li class="footer-copyright-item"><a href="{% url 'products' %}">محصولات</a></li>
+            <li class="footer-copyright-item"><a href="{% url 'home' %}#gallery">گالری</a></li>
+            <li class="footer-copyright-item"><a href="{% url 'about' %}">درباره ما</a></li>
+            <li class="footer-copyright-item"><a href="{% url 'contact' %}">تماس با ما</a></li>
         </ul>
         <span class="footer-copyright-text">© ۱۴۰۴ فرش پرشین – کلیه حقوق این وبسایت محفوظ است.</span>
     </div>
