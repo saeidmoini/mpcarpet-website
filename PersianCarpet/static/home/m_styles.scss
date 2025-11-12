@@ -322,7 +322,7 @@ $font-thin: "IRANYekanX-Thin";
 }
 // gallery swiper
 .swiper {
-    width: 123.6rem;
+    width: 100vw;
     height: max-content;
 }
 
@@ -413,7 +413,7 @@ $font-thin: "IRANYekanX-Thin";
 .gallery-swiper-navs {
     position: absolute;
     bottom: -6.5rem;
-    right: 10.2%;
+    left: 16.1rem;
     display: flex;
     flex-direction: column;
     box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.23);
@@ -435,7 +435,7 @@ $font-thin: "IRANYekanX-Thin";
 .gallery-cta {
     position: absolute;
     bottom: 0;
-    right: 15%;
+    left: 0;
     padding: 1.6rem 3.3rem;
     background-color: white;
     color: var(--accent-main);
@@ -526,4 +526,93 @@ $font-thin: "IRANYekanX-Thin";
     position: absolute;
     left: -8%;
     top: 0;
+}
+
+
+// responsive 
+@media (max-width: 1439px) {
+    // .gallery-cta {
+    //     right: 14%;
+    // }
+    // .gallery-swiper-navs {
+    //     right: 9.5%;
+    // }
+}
+@media (max-width: 1199px) {
+    // .gallery-cta {
+    //     right: 16.8%;
+    // }
+    // .gallery-swiper-navs {
+    //     right: 11.4%;
+    // }
+    .gallery {
+        padding-right: 0;
+    }
+    .artistry-img {
+        left: 5rem;
+    }
+}
+@media (max-width: 1023px) {
+    // .gallery-cta {
+    //     right: 19.7%;
+    // }
+    .artistry-typo {
+        width: 40%;
+    }
+    .artistry-img {
+        left: 0;
+    }
+
+}
+@media (max-width: 767px)  {
+    .gallery-typo-art {
+        display: none;
+    }
+    .artistry-img {
+        display: none;
+    }
+    .agents-section {
+
+        .artistry-typo {
+            bottom: 25%;
+        }
+    } 
+
+        
+}
+@media (max-width: 479px)  {
+    .artistry {
+        height: max-content;
+    }
+    .artistry {
+        .background-art {
+            position: relative;
+        }
+    }
+    .artistry-typo {
+        width: 100%;
+        position: relative;
+    }
+    .agents-section {
+        height: max-content;
+        .background-art {
+            position: relative;
+            top: 0;
+        }
+        .artistry-typo {
+            width: 100%;
+        }
+    }
+    .gallery-typo-art {
+        display: none;
+    }
+    .agents-map {
+        display: none;
+    }
+    .tab-button {
+        margin-right: 4rem;
+    }
+    .tab-button button.active {
+        background-color: white;
+    }
 }

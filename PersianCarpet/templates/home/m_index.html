@@ -23,6 +23,9 @@
         width: 2rem;
         height: 2rem;
     }
+    .swiper {
+        width: 100vw;
+    }
 }
 </style>
 {% endblock %}
@@ -48,6 +51,12 @@
             <h2 class="gallery-title">
                 نگاهی به آثار<br> هنری ما
             </h2>
+            <div class="gallery-swiper-navs">
+                <div class="swiper-button-next gallery-swiper-button"></div>
+                <div class="swiper-button-prev gallery-swiper-button"></div>
+            </div>
+            <a href="{% url 'products' %}" class="gallery-cta">مشاهده همه</a>
+        </div>
         </div>
         <ul class="tab-button-list">
             <li class="tab-button">
@@ -314,11 +323,11 @@
         </div>
         </div>
         
-        <div class="gallery-swiper-navs">
+        {% comment %} <div class="gallery-swiper-navs">
             <div class="swiper-button-next gallery-swiper-button"></div>
             <div class="swiper-button-prev gallery-swiper-button"></div>
-        </div>
-                <a href="{% url 'products' %}" class="gallery-cta">مشاهده همه</a>
+        </div> {% endcomment %}
+        {% comment %} <a href="{% url 'products' %}" class="gallery-cta">مشاهده همه</a> {% endcomment %}
     </section>
     {% comment %} artistry section {% endcomment %}
     <section class="artistry">
@@ -412,6 +421,18 @@ const swiper = new Swiper('.swiper', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
     },
+    breakpoints: {
+        479: {
+            slidesPerView: 1,
+            spaceBetween: 0,
+        },
+        767: {
+            slidesPerView: 2,
+        },
+        1023: {
+            slidesPerView: 4,
+        },
+    }
 });
 
 

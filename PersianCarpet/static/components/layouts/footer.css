@@ -18,6 +18,7 @@ footer {
 }
 .footer-content span {
   margin-bottom: 0.4rem;
+  text-align: center;
 }
 .footer-content *:not(.footer-overlay) {
   z-index: 9;
@@ -108,4 +109,19 @@ footer {
   justify-self: center;
   align-self: flex-end;
   margin-bottom: 3.4rem;
+}
+
+@media (max-width: 767px) {
+  .footer-typo {
+    display: none;
+  }
+}
+@media (max-width: 479px) {
+  .footer-typo {
+    display: none;
+  }
+  .footer-copyright-list {
+    width: 100vw;
+    justify-content: space-around;
+  }
 }/*# sourceMappingURL=footer.css.map */
