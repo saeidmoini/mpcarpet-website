@@ -164,8 +164,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: 25%;
-  padding: 0 7rem;
+  padding-top: 10%;
 }
 
 .hero-typo {
@@ -231,4 +230,249 @@
 }
 .hero-cta:hover {
   color: white;
+}
+
+.product-list {
+  margin-top: 10.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3.2rem;
+}
+
+.product-card {
+  width: auto;
+  height: auto;
+  max-height: -moz-max-content;
+  max-height: max-content;
+  margin-bottom: 6.4rem;
+}
+
+.product-img {
+  width: 100%;
+  max-width: inherit;
+  height: 50rem;
+  overflow: hidden;
+  padding: 0.5rem;
+  background-color: white;
+  margin: 0;
+  margin-bottom: 1.2rem;
+}
+.product-img img {
+  width: 100%;
+  height: 100%;
+}
+
+.product-title {
+  font-family: "IRANYekanX-Bold";
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: right;
+  vertical-align: middle;
+  margin-bottom: 0.8rem;
+  color: var(--text-gray);
+}
+
+.product-desc {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.product-desc li {
+  position: relative;
+  color: var(--text-gray);
+}
+.product-desc li::after {
+  content: "|";
+  position: relative;
+  margin: 0 0.8rem;
+}
+.product-desc li:last-of-type::after {
+  content: "";
+}
+
+.background-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 36.3rem;
+  height: 75.7rem;
+  background-image: url("../imgs/islamic-pattern-03.png");
+  background-repeat: repeat;
+  background-color: var(--accent-main);
+}
+
+.gallery-title {
+  position: relative;
+  font-family: "IRANYekanX-Bold";
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 45px;
+  letter-spacing: 0;
+  text-align: right;
+  vertical-align: middle;
+  color: var(--text-gray);
+  margin: 0 3rem;
+  padding: 3rem 0;
+}
+.gallery-title::after {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  content: "";
+  width: 6.4rem;
+  height: 0.4rem;
+  background-color: var(--text-gray);
+  margin-top: 0.8rem;
+}
+
+.artistry-typo {
+  position: absolute;
+  bottom: 0;
+  width: 46%;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0;
+  text-align: right;
+  vertical-align: middle;
+  color: var(--text-gray);
+  text-align: justify;
+}
+
+.gallery-typo-art {
+  position: absolute;
+  top: 0;
+  left: 5rem;
+}
+
+.agents-map {
+  position: absolute;
+  left: -8%;
+  top: 0;
+}
+
+.artistry-cta {
+  width: 17.2rem;
+  height: 5.6rem;
+  border: 0.1rem solid var(--accent-main);
+  color: var(--accent-main);
+  margin-top: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.artistry-cta:hover {
+  color: var(--text-gray);
+  background-color: var(--accent-main);
+}
+
+.agents-section {
+  height: 78.2rem;
+  margin-top: 23rem;
+}
+.agents-section .background-art {
+  top: 21.7rem;
+  width: 43.1rem;
+  height: 15.9rem;
+}
+.agents-section .background-art .gallery-title {
+  margin: 0 2rem;
+  padding-bottom: 1rem;
+}
+.agents-section .background-art .gallery-title::after {
+  width: 10.8rem;
+}
+.agents-section .artistry-typo {
+  bottom: 30%;
+  right: 0;
+  width: 35%;
+}
+
+@media (max-width: 1199px) {
+  .gallery {
+    padding-right: 0;
+  }
+  .artistry-img {
+    left: 5rem;
+  }
+}
+@media (max-width: 1023px) {
+  .artistry-typo {
+    width: 40%;
+  }
+  .artistry-img {
+    left: 0;
+  }
+  .product-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .hero-section {
+    align-items: center;
+  }
+  .hero-slider {
+    margin-top: 10rem;
+  }
+  .hero-section {
+    flex-direction: column;
+  }
+  .gallery-typo-art {
+    display: none;
+  }
+  .artistry-img {
+    display: none;
+  }
+  .agents-section .artistry-typo {
+    bottom: 25%;
+  }
+  .hero-slider {
+    display: none;
+  }
+}
+@media (max-width: 479px) {
+  .artistry {
+    height: -moz-max-content;
+    height: max-content;
+  }
+  .artistry .background-art {
+    position: relative;
+  }
+  .artistry-typo {
+    width: 100%;
+    position: relative;
+  }
+  .agents-section {
+    height: -moz-max-content;
+    height: max-content;
+  }
+  .agents-section .background-art {
+    position: relative;
+    top: 0;
+  }
+  .agents-section .artistry-typo {
+    width: 100%;
+  }
+  .gallery-typo-art {
+    display: none;
+  }
+  .agents-map {
+    display: none;
+  }
+  .tab-button {
+    margin-right: 4rem;
+  }
+  .tab-button button.active {
+    background-color: white;
+  }
+  .product-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .hero-typo {
+    margin-top: 5rem;
+  }
 }/*# sourceMappingURL=m_styles.css.map */
