@@ -8,7 +8,7 @@
     src: url("./IRYekan/Iranyekan-light.ttf") format("truetype");
     font-display: swap;
 }
-@font-face {
+/* @font-face {
     font-family: "IRANYekanX-Regular";
     src: url("./IRYekan/IRYekan.woff2") format("woff2"), url("./IRYekan/IRYekan.woff") format("woff"), url("./IRYekan/Iranyekan.ttf") format("truetype");
     font-display: swap;
@@ -21,6 +21,21 @@
 @font-face {
     font-family: "IRANYekanWeb";
     src: url("./IRYekan/IRYekan.woff2") format("woff2"), url("./IRYekan/IRYekan.woff") format("woff"), url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+} */
+@font-face {
+    font-family: "IRANYekanX-Regular";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: "IRANYekanX";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: "IRANYekanWeb";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
     font-display: swap;
 }
 @font-face {

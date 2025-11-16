@@ -334,7 +334,8 @@ $font-thin: "IRANYekanX-Thin";
 .show-slide {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.8s ease forwards;
+    animation: fadeInUp 1.2s ease forwards;
+    -webkit-animation: fadeInUp 1.2s ease forwards;
 }
 
 @keyframes fadeInUp {

@@ -38,7 +38,7 @@
         {% include "components/layouts/navbar.html" %}
         <div class="hero">
             <div class="hero-video">
-                <video id="heroVideo" src="{% static 'videos/30-seconds-video.mp4' %}" autoplay muted playsinline></video>
+                <video id="heroVideo" src="{% static 'videos/video-sample.mp4' %}" autoplay muted playsinline></video>
             </div>
         </div>  
     </header>
@@ -73,6 +73,19 @@
         <div id="swiper1" class="tabcontent">
             <div class="swiper">
             <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="gallery-card">
+                        <figure class="gallery-img">
+                            <img src="{% static 'imgs/gallery-swiper.png' %}" alt="gallery image">
+                        </figure>
+                        <h3 class="gallery-card-title">فرش آذین</h3>
+                        <ul class="gallery-card-list">
+                            <li class="gallery-card-item">۳۰۰ شانه</li>
+                            <li class="gallery-card-item">تراکم ۹۶۰</li>
+                            <li class="gallery-card-item">پلی پروپیلین</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="swiper-slide">
                     <div class="gallery-card">
                         <figure class="gallery-img">
@@ -374,43 +387,107 @@
 {{ block.super }}
 <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
 <script>
-        const video = document.getElementById('heroVideo');
-        const body = document.body;
-        let isVideoEnded = false;
-        let scrollPos = 0;
+const video = document.getElementById("heroVideo");
+const body = document.body;
 
-        // Disable scroll until video ends
-        window.addEventListener('wheel', (e) => {
-        if (isVideoEnded) return; // allow scroll after video ends
+// STATE MACHINE
+let state = "idle";
+// idle → autoplay starts
+// playing → autoplay active
+// scrubbing → user scroll overrides video currentTime
+// ended → finished and scroll unlocked
+
+let scrollPos = 0;
+
+
+// -------------------------------------------------
+// AUTOPLAY when video enters viewport
+// -------------------------------------------------
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                startHeroAutoplay();
+            }
+        });
+    },
+    { threshold: 0.5 }
+);
+
+observer.observe(video.parentElement);
+
+
+// -------------------------------------------------
+// AUTOPLAY + RESTART
+// -------------------------------------------------
+function startHeroAutoplay() {
+    // Reset state every time user returns
+    state = "playing";
+    scrollPos = 0;
+
+    // Lock scroll again while video is active
+    document.documentElement.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+
+    // Reset and autoplay
+    video.currentTime = 0;
+    video.play();
+}
+
+
+// -------------------------------------------------
+// SCROLL → SCRUB VIDEO
+// -------------------------------------------------
+window.addEventListener(
+    "wheel",
+    (e) => {
+        // Only scrub while playing OR already scrubbing
+        if (state !== "playing" && state !== "scrubbing") return;
+
         e.preventDefault();
 
-        // scroll direction
-        scrollPos += e.deltaY * 0.0003; // adjust sensitivity
+        // Enter scrubbing mode
+        state = "scrubbing";
+
+        // Update scrub position
+        scrollPos += e.deltaY * 0.00025;
         scrollPos = Math.min(Math.max(scrollPos, 0), 1);
 
         if (video.duration) {
             video.currentTime = scrollPos * video.duration;
         }
-        }, { passive: false });
+    },
+    { passive: false }
+);
 
-        // When video ends, unlock scroll
-        video.addEventListener('ended', () => {
-        isVideoEnded = true;
-        document.documentElement.style.overflow = 'auto';
-        body.style.overflow = 'auto';
-        window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-        });
 
-        // Fallback: detect end manually (since video might not actually play full)
-        video.addEventListener('timeupdate', () => {
-        if (!isVideoEnded && video.currentTime >= video.duration - 0.1) {
-            isVideoEnded = true;
-            document.documentElement.style.overflow = 'auto';
-            body.style.overflow = 'auto';
-            window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-        }
-        });
+// -------------------------------------------------
+// END OF VIDEO → unlock scroll
+// -------------------------------------------------
+video.addEventListener("ended", () => {
+    state = "ended";
+
+    document.documentElement.style.overflow = "auto";
+    body.style.overflow = "auto";
+
+    // Smooth scroll to next section
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+});
+
+
+// -------------------------------------------------
+// Fallback end detection
+// -------------------------------------------------
+video.addEventListener("timeupdate", () => {
+    if (state !== "scrubbing" && video.currentTime >= video.duration - 0.1) {
+        state = "ended";
+
+        document.documentElement.style.overflow = "auto";
+        body.style.overflow = "auto";
+    }
+});
 </script>
+
 <script>
 const swiper = new Swiper('.swiper', {
     slidesPerView: 4,
@@ -428,9 +505,19 @@ const swiper = new Swiper('.swiper', {
         },
         767: {
             slidesPerView: 2,
+            spaceBetween: 25,
         },
         1023: {
             slidesPerView: 4,
+            spaceBetween: 25,
+        },
+        1199: {
+            slidesPerView: 4,
+            spaceBetween: 25,
+        },
+        1439: {
+            slidesPerView: 5,
+            spaceBetween: 25,
         },
     }
 });
@@ -438,86 +525,124 @@ const swiper = new Swiper('.swiper', {
 
 // === GALLERY SCROLL REVEAL CONTROL ===
 document.addEventListener("DOMContentLoaded", () => {
-const gallerySection = document.querySelector(".gallery");
-if (!gallerySection) return;
+    const gallerySection = document.querySelector(".gallery");
+    if (!gallerySection) return;
 
-const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
-const slides = swiperContainer.querySelectorAll(".swiper-slide");
-let shownSlides = 0;
-let animationStarted = false;
-let lockScroll = false;
-let touchStartY = 0;
+    const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
+    const slides = swiperContainer.querySelectorAll(".swiper-slide");
+    let shownSlides = 0;
+    let animationStarted = false;
+    let sectionInView = false;
 
-// Hide slides initially
-slides.forEach((slide) => slide.classList.add("hidden-slide"));
+    const resetSlides = () => {
+        slides.forEach((slide) => {
+            slide.classList.remove("show-slide");
+            slide.classList.add("hidden-slide");
+        });
+        shownSlides = 0;
+        animationStarted = false;
+    };
 
-const showNextSlide = () => {
-    if (shownSlides < 4) {
-    slides[shownSlides].classList.add("show-slide");
-    shownSlides++;
-    if (shownSlides === 4) unlockPageScroll();
-    }
-};
+    let lockScroll = false;
+    let touchStartY = 0;
+    let accumulatedDelta = 0; // for wheel threshold
 
-const lockPageScroll = () => {
-    lockScroll = true;
-    document.body.style.overflow = "hidden";
-};
+    // Hide slides initially
+    slides.forEach((slide) => slide.classList.add("hidden-slide"));
 
-const unlockPageScroll = () => {
-    lockScroll = false;
-    document.body.style.overflow = "";
-    removeListeners();
-};
+    const showNextSlide = () => {
+        if (shownSlides < slides.length) {
+            const slide = slides[shownSlides];
+            slide.classList.add("show-slide");
+            slide.classList.remove("hidden-slide");
+            shownSlides++;
 
-const handleWheel = (e) => {
-    if (!lockScroll) return;
-    e.preventDefault();
-    if (e.deltaY > 0) showNextSlide();
-};
+            if (shownSlides === slides.length) {
+                unlockPageScroll();
+            }
+        }
+    };
 
-const handleTouchStart = (e) => {
-    if (!lockScroll) return;
-    touchStartY = e.touches[0].clientY;
-};
+    const lockPageScroll = () => {
+        lockScroll = true;
+        document.body.style.overflow = "hidden";
+    };
 
-const handleTouchMove = (e) => {
-    if (!lockScroll) return;
-    const diff = touchStartY - e.touches[0].clientY;
-    if (diff > 40) {
-    showNextSlide();
-    touchStartY = e.touches[0].clientY;
-    }
-    e.preventDefault();
-};
+    const unlockPageScroll = () => {
+        lockScroll = false;
+        document.body.style.overflow = "";
+        removeListeners();
+        accumulatedDelta = 0;
+    };
 
-const addListeners = () => {
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    window.addEventListener("touchstart", handleTouchStart, { passive: false });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-};
+    const handleWheel = (e) => {
+        if (!lockScroll) return;
+        e.preventDefault();
 
-const removeListeners = () => {
-    window.removeEventListener("wheel", handleWheel);
-    window.removeEventListener("touchstart", handleTouchStart);
-    window.removeEventListener("touchmove", handleTouchMove);
-};
+        accumulatedDelta += e.deltaY;
+        if (accumulatedDelta > 100) { // adjust threshold for one full scroll
+            showNextSlide();
+            accumulatedDelta = 0;
+        }
+    };
 
-// Start reveal only when gallery center is at viewport center
-const checkSectionPosition = () => {
-    const rect = gallerySection.getBoundingClientRect();
-    const sectionCenter = rect.top + rect.height / 2;
-    const viewportCenter = window.innerHeight / 2;
-    if (!animationStarted && Math.abs(sectionCenter - viewportCenter) < 150) {
-    animationStarted = true;
-    lockPageScroll();
-    addListeners();
-    }
-};
+    const handleTouchStart = (e) => {
+        if (!lockScroll) return;
+        touchStartY = e.touches[0].clientY;
+    };
 
-window.addEventListener("scroll", checkSectionPosition);
-checkSectionPosition(); // initial check
+    const handleTouchMove = (e) => {
+        if (!lockScroll) return;
+        const diff = touchStartY - e.touches[0].clientY;
+        if (diff > 40) { // threshold for swipe
+            showNextSlide();
+            touchStartY = e.touches[0].clientY;
+        }
+        e.preventDefault();
+    };
+
+    const addListeners = () => {
+        window.addEventListener("wheel", handleWheel, { passive: false });
+        window.addEventListener("touchstart", handleTouchStart, { passive: false });
+        window.addEventListener("touchmove", handleTouchMove, { passive: false });
+    };
+
+    const removeListeners = () => {
+        window.removeEventListener("wheel", handleWheel);
+        window.removeEventListener("touchstart", handleTouchStart);
+        window.removeEventListener("touchmove", handleTouchMove);
+    };
+
+    // Start reveal only when gallery center is at viewport center
+    const checkSectionPosition = () => {
+        const rect = gallerySection.getBoundingClientRect();
+        const isVisible =
+            rect.top < window.innerHeight * 0.75 &&
+            rect.bottom > window.innerHeight * 0.25;
+
+        // When section becomes visible
+        if (!sectionInView && isVisible) {
+            sectionInView = true;
+
+            if (!animationStarted) {
+                lockPageScroll();
+                addListeners();
+                animationStarted = true;
+            }
+        }
+
+        // When section is completely out of view → reset animation
+        if (sectionInView && !isVisible) {
+            sectionInView = false;
+            resetSlides();
+            unlockPageScroll();
+        }
+    };
+
+    window.addEventListener("scroll", checkSectionPosition);
+    checkSectionPosition(); // initial check
 });
+
 
 </script>
 <script>
