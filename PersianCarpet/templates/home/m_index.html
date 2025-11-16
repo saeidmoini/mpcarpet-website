@@ -389,16 +389,12 @@
 <script>
 const video = document.getElementById("heroVideo");
 const body = document.body;
+const videoSection = video.parentElement;
 
 // STATE MACHINE
 let state = "idle";
-// idle → autoplay starts
-// playing → autoplay active
-// scrubbing → user scroll overrides video currentTime
-// ended → finished and scroll unlocked
-
 let scrollPos = 0;
-
+let lastScrollY = window.scrollY;
 
 // -------------------------------------------------
 // AUTOPLAY when video enters viewport
@@ -414,26 +410,21 @@ const observer = new IntersectionObserver(
     { threshold: 0.5 }
 );
 
-observer.observe(video.parentElement);
-
+observer.observe(videoSection);
 
 // -------------------------------------------------
 // AUTOPLAY + RESTART
 // -------------------------------------------------
 function startHeroAutoplay() {
-    // Reset state every time user returns
     state = "playing";
     scrollPos = 0;
 
-    // Lock scroll again while video is active
     document.documentElement.style.overflow = "hidden";
     body.style.overflow = "hidden";
 
-    // Reset and autoplay
     video.currentTime = 0;
     video.play();
 }
-
 
 // -------------------------------------------------
 // SCROLL → SCRUB VIDEO
@@ -441,25 +432,43 @@ function startHeroAutoplay() {
 window.addEventListener(
     "wheel",
     (e) => {
+        const deltaY = e.deltaY;
+        const scrollDirection = deltaY > 0 ? "down" : "up";
+
         // Only scrub while playing OR already scrubbing
-        if (state !== "playing" && state !== "scrubbing") return;
+        if (state === "playing" || state === "scrubbing") {
+            e.preventDefault();
+            state = "scrubbing";
 
-        e.preventDefault();
+            scrollPos += deltaY * 0.00025;
+            scrollPos = Math.min(Math.max(scrollPos, 0), 1);
 
-        // Enter scrubbing mode
-        state = "scrubbing";
-
-        // Update scrub position
-        scrollPos += e.deltaY * 0.00025;
-        scrollPos = Math.min(Math.max(scrollPos, 0), 1);
-
-        if (video.duration) {
-            video.currentTime = scrollPos * video.duration;
+            if (video.duration) {
+                video.currentTime = scrollPos * video.duration;
+            }
         }
+
+        // -------------------------------------------------
+        // NEW FEATURE: Snap video section into view when scrolling up
+        // -------------------------------------------------
+        if (scrollDirection === "up") {
+            const rect = videoSection.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // If bottom of section is visible in viewport
+            if (rect.bottom <= viewportHeight && rect.bottom > 0) {
+                // Snap section fully into view
+                window.scrollTo({
+                    top: window.scrollY - (viewportHeight - rect.bottom),
+                    behavior: "smooth",
+                });
+            }
+        }
+
+        lastScrollY = window.scrollY;
     },
     { passive: false }
 );
-
 
 // -------------------------------------------------
 // END OF VIDEO → unlock scroll
@@ -470,10 +479,8 @@ video.addEventListener("ended", () => {
     document.documentElement.style.overflow = "auto";
     body.style.overflow = "auto";
 
-    // Smooth scroll to next section
     window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
 });
-
 
 // -------------------------------------------------
 // Fallback end detection
@@ -487,6 +494,7 @@ video.addEventListener("timeupdate", () => {
     }
 });
 </script>
+
 
 <script>
 const swiper = new Swiper('.swiper', {
@@ -508,15 +516,11 @@ const swiper = new Swiper('.swiper', {
             spaceBetween: 25,
         },
         1023: {
-            slidesPerView: 4,
+            slidesPerView: 3,
             spaceBetween: 25,
         },
         1199: {
             slidesPerView: 4,
-            spaceBetween: 25,
-        },
-        1439: {
-            slidesPerView: 5,
             spaceBetween: 25,
         },
     }
@@ -545,7 +549,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let lockScroll = false;
     let touchStartY = 0;
-    let accumulatedDelta = 0; // for wheel threshold
+    let accumulatedDelta = 0;
 
     // Hide slides initially
     slides.forEach((slide) => slide.classList.add("hidden-slide"));
@@ -580,7 +584,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         accumulatedDelta += e.deltaY;
-        if (accumulatedDelta > 100) { // adjust threshold for one full scroll
+        if (accumulatedDelta > 100) {
             showNextSlide();
             accumulatedDelta = 0;
         }
@@ -594,7 +598,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleTouchMove = (e) => {
         if (!lockScroll) return;
         const diff = touchStartY - e.touches[0].clientY;
-        if (diff > 40) { // threshold for swipe
+        if (diff > 40) {
             showNextSlide();
             touchStartY = e.touches[0].clientY;
         }
@@ -613,17 +617,15 @@ document.addEventListener("DOMContentLoaded", () => {
         window.removeEventListener("touchmove", handleTouchMove);
     };
 
-    // Start reveal only when gallery center is at viewport center
     const checkSectionPosition = () => {
         const rect = gallerySection.getBoundingClientRect();
         const isVisible =
             rect.top < window.innerHeight * 0.75 &&
             rect.bottom > window.innerHeight * 0.25;
 
-        // When section becomes visible
+        // Section becomes visible → start animation
         if (!sectionInView && isVisible) {
             sectionInView = true;
-
             if (!animationStarted) {
                 lockPageScroll();
                 addListeners();
@@ -631,13 +633,33 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // When section is completely out of view → reset animation
+        // Section completely out of view → reset
         if (sectionInView && !isVisible) {
             sectionInView = false;
             resetSlides();
             unlockPageScroll();
         }
     };
+
+    // --------------------------
+    // NEW FEATURE: Snap gallery section when scrolling up
+    // --------------------------
+    window.addEventListener("wheel", (e) => {
+        const deltaY = e.deltaY;
+        const scrollDirection = deltaY > 0 ? "down" : "up";
+        if (scrollDirection === "up") {
+            const rect = gallerySection.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // If bottom of section is visible but not fully
+            if (rect.bottom <= viewportHeight && rect.bottom > 0) {
+                window.scrollTo({
+                    top: window.scrollY - (viewportHeight - rect.bottom),
+                    behavior: "smooth",
+                });
+            }
+        }
+    }, { passive: false });
 
     window.addEventListener("scroll", checkSectionPosition);
     checkSectionPosition(); // initial check
