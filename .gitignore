@@ -7,6 +7,7 @@ __pycache__/
 
 # Virtual environments & tools
 venv/
+.env
 .env/
 .venv/
 pip-wheel-metadata/
