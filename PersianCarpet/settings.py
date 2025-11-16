@@ -82,7 +82,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'fa'
 
 TIME_ZONE = 'Asia/Tehran'
 
@@ -195,16 +195,14 @@ INSTALLED_APPS = [
 ]
 
 LANGUAGES = (
-    ## Customize this
-    ('en', gettext('en')),
+    ('fa', gettext('Farsi')),
 )
 
 CMS_LANGUAGES = {
-    ## Customize this
     1: [
         {
-            'code': 'en',
-            'name': gettext('en'),
+            'code': 'fa',
+            'name': gettext('Farsi'),
             'redirect_on_fallback': True,
             'public': True,
             'hide_untranslated': False,

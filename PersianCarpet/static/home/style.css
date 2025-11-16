@@ -1,11 +1,12 @@
 .home-page {
   background-color: #18181b;
   overflow: hidden;
-  width: 100%;
-  min-width: 1200px;
+  width: min(100%, 1440px);
   max-width: 1440px;
   height: 3984px;
   position: relative;
+  margin: 0 auto;
+  direction: ltr;
 }
 
 .home-page .image {
@@ -685,9 +686,10 @@
 
 .home-page .line-4 {
   position: relative;
+  display: inline-block;
   width: 1px;
   height: 20px;
-  object-fit: cover;
+  background: #d4d4d8;
 }
 
 .home-page .div-2 {
@@ -1610,3 +1612,119 @@
     height: 8px;
   }
 }
+
+/* Product carousel layout (migrated from inline styles) */
+.home-page .product-carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding: 0 50px 0 0;
+}
+
+.home-page .product-carousel-container .product-carousel-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.home-page .product-carousel-container .carousel-prev-btn,
+.home-page .product-carousel-container .carousel-next-btn {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.home-page .product-carousel-container .frame-15 {
+  width: 100%;
+  height: 100%;
+}
+
+.home-page .product-carousel-container .img-wrapper {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.home-page .product-carousel-container .img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home-page .product-carousel-container .text-wrapper-13 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.home-page .product-carousel-container .frame-16 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-page .product-carousel-container .text-wrapper-14,
+.home-page .product-carousel-container .text-wrapper-16 {
+  font-size: 14px;
+  color: #666666;
+}
+
+.home-page .product-carousel-container .line-4 {
+  width: 1px;
+  height: 12px;
+  background: #dddddd;
+}
+
+@media (max-width: 1200px) {
+  .home-page .product-carousel-container {
+    padding: 0 32px 0 0;
+  }
+}
+
+@media (max-width: 992px) {
+  .home-page .product-carousel-container {
+    padding: 0 24px 0 0;
+  }
+
+  .home-page .product-carousel-container .product-carousel-track {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-page .product-carousel-container {
+    padding: 0 16px 0 0;
+  }
+
+  .home-page .product-carousel-container .img-wrapper {
+    height: 180px;
+  }
+}
+
+@media (max-width: 540px) {
+  .home-page .product-carousel-container {
+    padding: 0;
+  }
+
+  .home-page .product-carousel-container .product-carousel-track {
+    gap: 16px;
+  }
+
+  .home-page .product-carousel-container .img-wrapper {
+    height: 160px;
+  }
+
+  .home-page .product-carousel-container .text-wrapper-13 {
+    font-size: 16px;
+  }
+
+  .home-page .product-carousel-container .text-wrapper-14,
+  .home-page .product-carousel-container .text-wrapper-16 {
+    font-size: 12px;
+  }
+}
+

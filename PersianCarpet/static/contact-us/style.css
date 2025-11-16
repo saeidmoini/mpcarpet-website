@@ -1,11 +1,12 @@
 .abou-us {
   background-color: #18181b;
   overflow: hidden;
-  width: 100%;
-  min-width: 1200px;
+  width: min(100%, 1440px);
   max-width: 1440px;
   min-height: 3300px;
   position: relative;
+  margin: 0 auto;
+  direction: ltr;
 }
 
 .abou-us .vector {
@@ -1072,3 +1073,4 @@
 .abou-us .text-wrapper-24:hover {
   color: var(--primary-300);
 }
+

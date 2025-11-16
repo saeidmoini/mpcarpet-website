@@ -1,46 +1,72 @@
 @font-face {
     font-family: "IRANYekanX-ExtraBold";
-    src: url(./IRYekan/Iranyekan-extrabold.ttf);
+    src: url("./IRYekan/Iranyekan-extrabold.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-Light";
-    src: url(./IRYekan/Iranyekan-light.ttf);
+    src: url("./IRYekan/Iranyekan-light.ttf") format("truetype");
+    font-display: swap;
 }
-@font-face {
+/* @font-face {
     font-family: "IRANYekanX-Regular";
-    src: url(./IRYekan/Iranyekan.ttf);
+    src: url("./IRYekan/IRYekan.woff2") format("woff2"), url("./IRYekan/IRYekan.woff") format("woff"), url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX";
-    src: url(./IRYekan/Iranyekan.ttf);
+    src: url("./IRYekan/IRYekan.woff2") format("woff2"), url("./IRYekan/IRYekan.woff") format("woff"), url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanWeb";
-    src: url(./IRYekan/Iranyekan.ttf);
+    src: url("./IRYekan/IRYekan.woff2") format("woff2"), url("./IRYekan/IRYekan.woff") format("woff"), url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+} */
+@font-face {
+    font-family: "IRANYekanX-Regular";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: "IRANYekanX";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: "IRANYekanWeb";
+    src: url("./IRYekan/Iranyekan.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-Black";
-    src: url(./IRYekan/Iranyekan-black.ttf);
+    src: url("./IRYekan/Iranyekan-black.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-Bold";
-    src: url(./IRYekan/Iranyekan-bold.ttf);
+    src: url("./IRYekan/Iranyekan-bold.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-ExtraBlack";
-    src: url(./IRYekan/Iranyekan-extrablack.ttf);
+    src: url("./IRYekan/Iranyekan-extrablack.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-Medium", "IRANYekanX-DemiBold";
-    src: url(./IRYekan/Iranyekan-medium.ttf);
+    src: url("./IRYekan/Iranyekan-medium.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-DemiBold";
-    src: url(./IRYekan/Iranyekan-medium.ttf);
+    src: url("./IRYekan/Iranyekan-medium.ttf") format("truetype");
+    font-display: swap;
 }
 @font-face {
     font-family: "IRANYekanX-Thin";
-    src: url(./IRYekan/Iranyekan-thin.ttf);
+    src: url("./IRYekan/Iranyekan-thin.ttf") format("truetype");
+    font-display: swap;
 }
 * {
     font-family: "IRANYekanX-Regular";

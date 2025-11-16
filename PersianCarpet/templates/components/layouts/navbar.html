@@ -1,0 +1,62 @@
+{% load static %}
+<nav class="navbar-wrapper">
+    <div class="container">
+        <div class="navbar">
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <img src="{% static 'imgs/icons/menu.svg' %}" alt="menu icon">
+            </button>
+            <ul class="navbar-list nav-link-list" id="sidebar">
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}" class="navbar-link logo {% if request.path == '/' %}active{% endif %}">
+                        <img src="{% static 'imgs/logo.png' %}" alt="navbar logo">
+                    </a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}" class="navbar-link {% if request.path == '/' %}active{% endif %}">خانه</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'products' %}" class="navbar-link {% if request.path == '/products/' %}active{% endif %}">محصولات</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'home' %}#gallery" class="navbar-link {% if request.path == '/gallery/' %}active{% endif %}">گالری</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'about' %}" class="navbar-link {% if request.path == '/about/' %}active{% endif %}">درباره ما</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="{% url 'contact' %}" class="navbar-link {% if request.path == '/contact/' %}active{% endif %}">تماس با ما</a>
+                </li>
+            </ul>
+            <ul class="navbar-list">
+                <li class="navbar-icon-item">
+                    <a href="tel:+985135411567" class="navbar-icon">
+                        <img src="{% static 'imgs/icons/phone.svg' %}" alt="phone icon">
+                    </a>
+                </li>
+                <li class="navbar-icon-item">
+                    <a href="{% url 'products' %}" class="navbar-icon">
+                        <img src="{% static 'imgs/icons/search.svg' %}" alt="search icon">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<script>
+    (function () {
+        const toggleBtn = document.getElementById("toggleSidebar");
+        const sidebar = document.getElementById("sidebar");
+        if (!toggleBtn || !sidebar) {
+            return;
+        }
+        toggleBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            sidebar.classList.toggle("active");
+        });
+        document.addEventListener("click", (e) => {
+            if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                sidebar.classList.remove("active");
+            }
+        });
+    })();
+</script>
