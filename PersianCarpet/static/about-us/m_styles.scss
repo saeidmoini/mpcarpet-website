@@ -1,0 +1,144 @@
+// variables
+$font: "IRANYekanX-Regular";
+$font-bold: "IRANYekanX-Bold";
+$font-light: "IRANYekanX-Light";
+$font-medium: "IRANYekanX-Medium";
+$font-extrabold: "IRANYekanX-ExtraBold";
+$font-thin: "IRANYekanX-Thin";
+
+@import url(../products/m_styles.css);
+// hero
+.hero-section {
+    margin-top: 8.2rem;
+}
+.hero-title {
+    position: relative;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 4.8rem;
+    line-height: 6.4rem;
+    letter-spacing: 0%;
+    text-align: right;
+    vertical-align: middle;
+}
+.hero-typo {
+    * {
+        position: relative;
+        z-index: 9;
+    }
+}
+.hero-bg {
+    position: absolute;
+    top: 1rem;
+    right: -12rem;
+    width: 60rem;
+    height: 55.1rem;
+    img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+}
+.hero-p {
+    width: 66rem;
+    color: var(--text-gray);
+}
+// about us desc
+.about-us-desc {
+    margin-top: 10.4rem;
+    width: 100%;
+    p {
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 1.8rem;
+        line-height: 2.8rem;
+        letter-spacing: 0%;
+        text-align: right;
+        vertical-align: middle;
+        color: var(--text-gray);
+        margin-top: 4rem;
+    }
+}
+// gallery
+.gallery-about-us {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    li {
+        width: 28.5rem;
+    height: 37.1rem;
+    }
+}
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: .5rem;
+    background-color: white;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+// awards
+.gallery {
+    position: relative;
+}
+.gallery-title {
+    &::after {
+        width: 22.4rem;
+    }
+}
+.awards {
+    overflow: hidden;
+}
+.awards-list {
+    margin-top: 12.6rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 9;
+    li {
+        width: 28.5rem;
+        height: 44.7rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-left: 1%;
+        margin-bottom: 4rem;
+        color: var(--text-gray);
+    }
+}
+.award-img {
+    width: 100%;
+    height: 85%;
+    margin: 0;
+    padding: 0;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.award-title {
+    margin: 0;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}
+.award-year {
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+}

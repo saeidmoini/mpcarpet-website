@@ -7,7 +7,7 @@
 {% comment %} <link rel="stylesheet" href="{% static 'products/globals.css' %}">
 <link rel="stylesheet" href="{% static 'products/styleguid.css' %}"> {% endcomment %}
 {% comment %} <link rel="stylesheet" href="{% static 'products/style.css' %}"> {% endcomment %}
-<link rel="stylesheet" href="{% static 'products/m_styles.css' %}">
+<link rel="stylesheet" href="{% static 'about-us/m_styles.css' %}">
 <link rel="stylesheet" href="{% static 'fonts/fonts.css' %}">
 <link rel="stylesheet" href="{% static 'components/layouts/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'components/layouts/footer.css' %}">
@@ -16,7 +16,107 @@
 {% block body_attrs %} dir="rtl" class="page-about-us"{% endblock %}
 
 {% block body %}
-    {% include "components/layouts/navbar.html" %}
-    
+{% comment %} header {% endcomment %}
+    <header>
+        {% include "components/layouts/navbar.html" %}
+        <div class="container">
+            <div class="hero-section">
+                <div class="hero-typo">
+                    <figure class="hero-bg"><img src="{% static "imgs/colored-map.png" %}" alt="map"></figure>
+                    <h1 class="hero-title">درباره کارخانه <br>فرش پرشین مشهد</h1>
+                    <p>زیبایی جاودانه‌ای که خانه شما لایق آن است</p>
+                    <span>فروش فقط از طریق نمایندگی / تماس مستقیم</span>
+                    <br>
+                    <a href="{% url 'contact' %}" class="hero-cta">مشاهده نمایندگی‌ها</a>
+                </div>
+                <div class="hero-p">
+                    <p>
+                        ما جمعی از هنرمندان، طراحان و متخصصان صنعت فرش هستیم که با عشق و شور به خلق آثار هنری بی‌نظیر در قالب فرش‌های ایرانی مشغول هستیم. کارخانه ما با افتخار توانسته است با استفاده از مواد اولیه با کیفیت و تکنولوژی‌های نوین، محصولاتی با بالاترین استانداردهای جهانی تولید کند.
+<br><br>
+کارخانه ما با سال‌ها تجربه و سابقه درخشان در صنعت فرش، توانسته است جایگاه ویژه‌ای در بازارهای داخلی و خارجی به دست آورد. از زمان تأسیس، ما همواره در تلاش بوده‌ایم تا با ارائه محصولات با کیفیت و متنوع، رضایت مشتریان خود را جلب کنیم.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% comment %} about us {% endcomment %}
+    <div class="container">
+        <div class="about-us-desc">
+            <ul class="gallery-about-us">
+                <li>
+                    <figure class="gallery-img"><img src="{% static 'imgs/gallery-swiper1.png' %}" alt="carpet"></figure>
+                </li>
+                <li>
+                    <figure class="gallery-img"><img src="{% static 'imgs/gallery-swiper1.png' %}" alt="carpet"></figure>
+                </li>
+                <li>
+                    <figure class="gallery-img"><img src="{% static 'imgs/gallery-swiper1.png' %}" alt="carpet"></figure>
+                </li>
+                <li>
+                    <figure class="gallery-img"><img src="{% static 'imgs/gallery-swiper1.png' %}" alt="carpet"></figure>
+                </li>
+                
+            </ul>
+            <p>
+                کیفیت برتر محصولات: ما با استفاده از بهترین مواد اولیه و بهره‌گیری از تکنولوژی‌های مدرن، تلاش می‌کنیم تا محصولاتی با بالاترین کیفیت را به مشتریان ارائه دهیم. هر فرش با دقت و عشق ساخته می‌شود تا اطمینان حاصل کنیم که مشتریان ما از محصول نهایی رضایت کامل دارند.
+                <br>
+نوآوری و خلاقیت: ما با ترکیب هنر سنتی و نوآوری مدرن، به دنبال ایجاد طرح‌ها و الگوهای جدیدی هستیم که نمایانگر فرهنگ و تاریخ غنی ایران باشد. طرح‌های ما با الهام از الگوهای کلاسیک و با استفاده از رنگ‌های زنده و شاداب، هنر فرش ایرانی را به نمایش می‌گذارند.
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="gallery awards">
+            <div class="gallery-typo-art">
+            <img src="{% static 'imgs/awards-typo.png' %}" alt="gallery art">
+        </div>
+        <div class="background-art">
+            <h2 class="gallery-title">
+                جوایز و افتخارات ما
+            </h2>
+        </div>
+        <ul class="awards-list">
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award4.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award3.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award2.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award1.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award4.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award3.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award2.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+            <li>
+                <figure class="award-img"><img src="{% static 'imgs/award1.png' %}" alt="award"></figure>
+                <h3 class="award-title">Exemplary National Exporter of </h3>
+                <span class="award-year">the Year, 2021</span>
+            </li>
+        </ul>
+        </div>
+    </div>
     {% include "components/layouts/footer.html" %}
 {% endblock body %}
