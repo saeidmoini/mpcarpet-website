@@ -38,7 +38,7 @@
         {% include "components/layouts/navbar.html" %}
         <div class="hero">
             <div class="hero-video">
-                <video id="heroVideo" src="{% static 'videos/video-sample.mp4' %}" autoplay muted playsinline></video>
+                <video id="heroVideo" src="{% static 'videos/video-sample.mp4' %}" muted playsinline></video>
             </div>
         </div>  
     </header>
@@ -397,34 +397,22 @@ let scrollPos = 0;
 let lastScrollY = window.scrollY;
 
 // -------------------------------------------------
-// AUTOPLAY when video enters viewport
+// OBSERVER – No autoplay, but re-enable scrubbing when entering viewport
 // -------------------------------------------------
 const observer = new IntersectionObserver(
     (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                startHeroAutoplay();
+                // Reactivate scrubbing if video was ended
+                if (state === "ended") {
+                    state = "scrubbing";
+                }
             }
         });
     },
     { threshold: 0.5 }
 );
-
 observer.observe(videoSection);
-
-// -------------------------------------------------
-// AUTOPLAY + RESTART
-// -------------------------------------------------
-function startHeroAutoplay() {
-    state = "playing";
-    scrollPos = 0;
-
-    document.documentElement.style.overflow = "hidden";
-    body.style.overflow = "hidden";
-
-    video.currentTime = 0;
-    video.play();
-}
 
 // -------------------------------------------------
 // SCROLL → SCRUB VIDEO
@@ -434,9 +422,14 @@ window.addEventListener(
     (e) => {
         const deltaY = e.deltaY;
         const scrollDirection = deltaY > 0 ? "down" : "up";
+        const rect = videoSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
 
-        // Only scrub while playing OR already scrubbing
-        if (state === "playing" || state === "scrubbing") {
+        // Activate scrubbing only when video section is in viewport
+        if (
+            rect.top < viewportHeight &&
+            rect.bottom > 0
+        ) {
             e.preventDefault();
             state = "scrubbing";
 
@@ -446,54 +439,48 @@ window.addEventListener(
             if (video.duration) {
                 video.currentTime = scrollPos * video.duration;
             }
-        }
 
-        // -------------------------------------------------
-        // NEW FEATURE: Snap video section into view when scrolling up
-        // -------------------------------------------------
-        if (scrollDirection === "up") {
-            const rect = videoSection.getBoundingClientRect();
-            const viewportHeight = window.innerHeight;
+            // Snap video section into view when scrolling up
+            if (scrollDirection === "up") {
+                if (rect.bottom <= viewportHeight && rect.bottom > 0) {
+                    window.scrollTo({
+                        top: window.scrollY - (viewportHeight - rect.bottom),
+                        behavior: "smooth",
+                    });
+                }
+            }
 
-            // If bottom of section is visible in viewport
-            if (rect.bottom <= viewportHeight && rect.bottom > 0) {
-                // Snap section fully into view
+            // Unlock scroll when video reaches the end
+            if (scrollPos >= 1) {
+                state = "ended";
+                document.documentElement.style.overflow = "auto";
+                body.style.overflow = "auto";
+
+                // Snap to next section
+                const nextSectionTop = videoSection.offsetTop + videoSection.offsetHeight;
                 window.scrollTo({
-                    top: window.scrollY - (viewportHeight - rect.bottom),
+                    top: nextSectionTop,
                     behavior: "smooth",
                 });
             }
         }
-
-        lastScrollY = window.scrollY;
     },
     { passive: false }
 );
 
 // -------------------------------------------------
-// END OF VIDEO → unlock scroll
-// -------------------------------------------------
-video.addEventListener("ended", () => {
-    state = "ended";
-
-    document.documentElement.style.overflow = "auto";
-    body.style.overflow = "auto";
-
-    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-});
-
-// -------------------------------------------------
-// Fallback end detection
+// Optional: Fallback end detection if video plays
 // -------------------------------------------------
 video.addEventListener("timeupdate", () => {
-    if (state !== "scrubbing" && video.currentTime >= video.duration - 0.1) {
+    if (video.currentTime >= video.duration - 0.1) {
         state = "ended";
-
         document.documentElement.style.overflow = "auto";
         body.style.overflow = "auto";
     }
 });
 </script>
+
+
 
 
 <script>
