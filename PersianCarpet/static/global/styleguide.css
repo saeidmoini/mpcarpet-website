@@ -2,6 +2,9 @@
   --bg-dark: rgba(22, 28, 36, 1);
   --text-gray: rgba(244, 246, 248, 1);
   --accent-main: rgba(0, 134, 132, 1);
+  --accent-second: rgba(179, 219, 218, 1);
+  --gray-500: rgba(145, 158, 171, 1);
+  --gray-700: rgba(69, 79, 91, 1);
   /* --colour-swatch: rgba(161, 161, 170, 1);
   --primarymain: rgba(0, 134, 132, 1);
   --primary-400: rgba(51, 166, 165, 1);

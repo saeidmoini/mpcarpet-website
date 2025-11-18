@@ -90,6 +90,482 @@
                 </div>
             </div>
     </header>
-    {% comment %} {% include "components/layouts/footer.html" %} {% endcomment %}
+    <div class="container">
+        <section class="contact-form-section">
+            <div class="contact-info">
+                <ul class="company-info">
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/home.svg' %}" alt="home icon">
+                        </figure>
+                        <span>موقعیت ما:</span>
+                        <span>مشهد، شهرک صنعتی طوس، فاز یک، بلوار تلاش شمالی، تلاش شمالی ۵/۴</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/instagram.svg' %}" alt="home icon">
+                        </figure>
+                        <span>صفحه اینستاگرام ما:</span>
+                        <span style="direction: ltr;">@Farah.Persian.Mashhad</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/web.svg' %}" alt="home icon">
+                        </figure>
+                        <span>نشانی وبسایت:</span>
+                        <span>www.farshpersianmashhad.com</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/phone1.svg' %}" alt="home icon">
+                        </figure>
+                        <span>شماره تماس:</span>
+                        <span>05156741135 - 05131480000</span>
+                    </li>
+                </ul>
+                <ul class="company-address">
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/pin.svg' %}" alt="home icon">
+                        </figure>
+                        <span>شعبه ۱: خیابان فلسطین، ‌نبش فلسطين ۶</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/pin.svg' %}" alt="home icon">
+                        </figure>
+                        <span>شعبه ۲: خیابان مصلی، نبش مصلی ۳</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/pin.svg' %}" alt="home icon">
+                        </figure>
+                        <span>شعبه ۳: حدفاصل چهارراه شهدا و چهارراه خسروی، مقابل مخابرات</span>
+                    </li>
+                    <li>
+                        <figure class="icon">
+                            <img src="{% static 'imgs/icons/pin.svg' %}" alt="home icon">
+                        </figure>
+                        <span>شعبه ۴: خیابان مصلی، بین چمن ۵۹ و ۶۱</span>
+                    </li>
+                </ul>
+            </div>
+            <form action="{% url 'contact' %}" method="post" class="contact-form">
+                {% csrf_token %}
+                {% if request.GET.sent %}
+                    <div class="form-success">پیام شما با موفقیت ارسال شد.</div>
+                {% endif %}
+                {% if form.errors %}
+                    <ul class="form-errors" role="alert">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    </ul>
+                {% endif %}
+
+                <input type="text" name="name" id="formName" placeholder="نام *" required value="{{ form.name.value|default:'' }}">
+                <input type="tel" name="phone" id="formPhone" placeholder="شماره تلفن" value="{{ form.phone.value|default:'' }}">
+                <input type="email" name="email" id="formEmail" placeholder="ایمیل *" required value="{{ form.email.value|default:'' }}">
+                <textarea name="message" id="formMessage" placeholder="متن پیام ..." rows="6" maxlength="5000" aria-describedby="messageHelp">{{ form.message.value|default:'' }}</textarea>
+                <div id="messageHelp" class="message-help" aria-live="polite"></div>
+                <button type="submit">ارسال</button>
+            </form>
+        </section>
+        <section class="contact-map-section">
+            <div class="company-adresses">
+                <div class="background-art">
+                    <h2 class="gallery-title">
+                        هر کجا هستید، نزدیک‌ترین  نمایندگی کنار شماست
+                    </h2>
+                </div>
+                <ul class="city-list">
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name active" id="cityName">مشهد<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city active" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">تهران<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">اصفهان<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">تبریز<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">شیراز<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">کرمان<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">خوزستان<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">بروجن<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">بندرانزلی<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">بندرعباس<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">بیرجند<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">تایباد<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">چناران<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">فروس<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">کاشمر<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                    <li class="city-item" id="cityItem">
+                        <span class="city-name" id="cityName">گناباد<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="city">
+                            <li class="title">فروشگاه‌ها</li>
+                            <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
+                            <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
+                            <li>فروشگاه نگین مصلی | تلفن تماس: ۳۲۳۰۰۰۰۰-۰۵۱</li>
+                            <li>فروشگاه فلسطین | تلفن تماس: ۳۷۶۸۱۰۴۰-۰۵۱</li>
+                            <li class="title">نمایندگی‌ها</li>
+                            <li>نمایندگی بهمنی | تلفن تماس: ۰۹۱۵۵۰۹۸۸۷۴</li>
+                            <li>مایندگی امیری | تلفن تماس: ۰۹۱۵۱۰۷۲۵۶۴</li>
+                            <li>نمایندگی جعفری | تلفن تماس: ۰۹۱۵۱۵۷۳۲۴۲</li>
+                            <li>نمایندگی نبی‌زاده | تلفن تماس: ۰۹۱۵۵۰۲۶۱۵۴</li>
+                            <li>نمایندگی اصلاحی | تلفن تماس: ۰۹۱۵۳۰۳۳۰۵۱</li>
+                            <li>نمایندگی حسینی | تلفن تماس: ۰۹۱۵۱۱۰۰۰۸۰</li>
+                            <li>نمایندگی غلامزاده | تلفن تماس: ۰۹۱۵۵۱۵۹۶۹۲</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="contact-map">
+                <figure class="map-typo-art">
+                    <img src="{% static 'imgs/agents-typo.png' %}" alt="typo">
+                </figure>
+                <figure class="map"><img src="{% static 'imgs/agents-map.png' %}" alt="map"></figure>
+            </div>
+        </section>
+    </div>
+    {% include "components/layouts/footer.html" %}
     <script src="{% static 'js/slider.js' %}"></script>
+    <script>
+    (function(){
+        // City toggle functionality - works with multiple city items
+        const cityNames = document.querySelectorAll('.city-name');
+        
+        cityNames.forEach(function(cityName){
+            cityName.addEventListener('click', function(){
+                const parentItem = cityName.closest('.city-item');
+                const cityList = parentItem.querySelector('.city');
+                if(cityList){
+                    cityList.classList.toggle('active');
+                    cityName.classList.toggle('active');
+                }
+            });
+        });
+    })();
+    </script>
+    <script>
+    (function(){
+        const form = document.querySelector('.contact-form');
+        const textarea = document.getElementById('formMessage');
+        const help = document.getElementById('messageHelp');
+
+        function sanitizeInput(s){
+            let t = s.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, '');
+            // remove event handler attributes like onerror=, onload= inside any tags
+            t = t.replace(/<[^>]+>/g, function(tag){
+                return tag.replace(/\son\w+\s*=\s*(['\"]).*?\1/gi, '');
+            });
+            // escape remaining angle brackets
+            t = t.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            return t;
+        }
+
+        function looksLikeCode(s){
+            if(/<\/?(script|iframe|object|embed|img)[\s>]/i.test(s)) return 'contains disallowed HTML tags';
+            if(/<\?php\b|\beval\s*\(|base64_decode\(|document\.cookie|window\.location|onerror\s*=|onload\s*=|javascript:/i.test(s)) return 'contains code patterns';
+            if(/https?:\/\//i.test(s) && /free|prize|click here|win|transfer|urgent|bank|account|password/i.test(s)) return 'suspicious URL + scam keywords';
+            if(/([A-Za-z0-9+\/]{100,}=*)/.test(s)) return 'long base64-like string';
+            if(/\b(account|password|card number|iban|bank)\b/i.test(s) && /\d{6,}/.test(s)) return 'possible sensitive financial data';
+            return false;
+        }
+
+        function containsAnyUrls(s){
+            const urls = s.match(/https?:\/\/[^\s]+|www\.[^\s]+|ftp:\/\/[^\s]+/gi) || [];
+            return urls.length > 0 ? urls : false;
+        }
+
+        function showHelp(msg, type){
+            help.textContent = msg;
+            help.className = 'message-help ' + (type||'info');
+        }
+
+        form.addEventListener('submit', function(e){
+            const raw = textarea.value || '';
+            const trimmed = raw.trim();
+            if(trimmed.length === 0){
+                showHelp('لطفا متن پیام را وارد کنید.','error');
+                e.preventDefault(); return;
+            }
+            const urls = containsAnyUrls(trimmed);
+            if(urls){
+                showHelp('پیام نباید شامل لینک یا آدرس وب باشد.','error');
+                e.preventDefault(); return;
+            }
+            const codeProb = looksLikeCode(trimmed);
+            if(codeProb){
+                showHelp('پیام شامل محتوای نامعتبر یا کد است: ' + codeProb + '؛ لطفا محتوای متنی وارد کنید.','error');
+                e.preventDefault(); return;
+            }
+            // best-effort client-side sanitize; server must also validate
+            textarea.value = sanitizeInput(trimmed);
+            // allow submit
+        });
+
+        textarea.addEventListener('input', function(){
+            const raw = textarea.value || '';
+            if(looksLikeCode(raw)){
+                showHelp('هشدار: ممکن است محتوای وارد‌شده شامل کد یا الگوهای مخرب باشد. قبل از ارسال اصلاح کنید.','warning');
+            } else if(containsAnyUrls(raw)){
+                showHelp('هشدار: پیام نباید شامل لینک یا آدرس وب باشد.','warning');
+            } else {
+                showHelp('','info');
+            }
+        });
+    })();
+    </script>
 {% endblock body %}

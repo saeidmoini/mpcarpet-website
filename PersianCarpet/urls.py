@@ -6,6 +6,7 @@ from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 from django.views.generic import TemplateView
+from .views import ContactView
 
 admin.autodiscover()
 
@@ -17,7 +18,7 @@ urlpatterns = [
     path('products/', TemplateView.as_view(template_name='products/m_index.html'), name='products'),
     # path('products_demo/', TemplateView.as_view(template_name='products/m_index.html'), name='products'),
     path('about-us/', TemplateView.as_view(template_name='about-us/m_index.html'), name='about'),
-    path('contact-us/', TemplateView.as_view(template_name='contact-us/m_index.html'), name='contact'),
+    path('contact-us/', ContactView.as_view(), name='contact'),
 ]
 
 

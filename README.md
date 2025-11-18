@@ -7,21 +7,25 @@ in incremental phases to improve maintainability while preserving the approved U
 ## Current Phase Summary
 
 ### Phase 1 – Localization & Routing (Completed)
+
 - Default language switched to Farsi and CMS language configuration aligned to a single-language site.
 - Internationalized URL prefixes disabled until additional locales are ready.
 - Slider-based home page is now the default at `/`, with `/home/` as an alias and the video variant available at `/home-video/`.
 
 ### Phase 2 – Template Architecture (In Progress)
+
 - Base scaffolding (`base.html`, shared navbar/footer includes) is in place, and the home, video-home, about, contact, and products templates now extend it while keeping their Figma markup intact.
 - Remaining pages will be migrated once we have automated regression checks to guarantee no visual drift.
 
 ### Phase 3 – Asset Cleanup (In Progress)
+
 - Consolidated IRANYekan font files under `PersianCarpet/static/fonts/IRYekan` and updated `fonts.css` to serve WOFF/WOFF2 sources.
 - Audited templates for hard-coded assets: fixed mis-cased references, enforced `{% static %}` usage, and removed residual inline styles in favour of page stylesheets.
 - Added responsive breakpoints for home, products, about, and contact layouts while keeping the desktop composition pixel-aligned.
 - Introduced fragment includes for shared contact details to prepare for CMS-driven content blocks.
 
 ### Upcoming Focus
+
 - Continue Phase 2 refactor with visual regression guardrails.
 - Phase 3 follow-ups: replace hard-coded contact copy with context variables, wire navigation CTAs to future CMS slugs, and validate responsive behaviour with screenshot regression.
 
@@ -47,6 +51,7 @@ Static assets are collected from `PersianCarpet/static` and served under `/stati
 ### Initial Server Setup
 
 1. **Clone and setup:**
+
 ```bash
 git clone <repository-url>
 cd mpcarpet-website
@@ -56,6 +61,7 @@ pip install -r requirements.txt
 ```
 
 2. **Create `.env` file:**
+
 ```bash
 # Create .env file with required variables
 # IMPORTANT: .env is in .gitignore and should NOT be committed
@@ -68,6 +74,7 @@ EOF
 ```
 
 3. **Set proper permissions for `.env`:**
+
 ```bash
 # CRITICAL: .env must be readable by the application user (carpet)
 sudo chown carpet:www-data .env
@@ -75,11 +82,13 @@ sudo chmod 640 .env
 ```
 
 4. **Run migrations:**
+
 ```bash
 python manage.py migrate
 ```
 
 5. **Collect static files:**
+
 ```bash
 python manage.py collectstatic --noinput
 # Set proper ownership for static files
@@ -125,15 +134,18 @@ sudo systemctl reload nginx
 ### Common Issues
 
 **Permission Denied on `.env`:**
+
 - Error: `PermissionError: [Errno 13] Permission denied: '/path/to/.env'`
 - Solution: `sudo chown carpet:www-data .env && sudo chmod 640 .env`
 
 **Static files not loading:**
+
 - Check permissions: `sudo chown -R carpet:www-data /path/to/static/`
 - Verify collectstatic ran: `python manage.py collectstatic --noinput`
 - Check Nginx config points to correct static path
 
 **500 Server Error:**
+
 - Check Gunicorn logs: `sudo journalctl -u persian-carpet.service -n 100`
 - Verify `.env` permissions and content
 - Ensure all migrations are applied: `python manage.py migrate`
