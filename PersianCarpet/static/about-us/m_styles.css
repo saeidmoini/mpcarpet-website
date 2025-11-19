@@ -36,6 +36,7 @@
 .hero-p {
   width: 66rem;
   color: var(--text-gray);
+  z-index: 9;
 }
 
 .about-us-desc {
@@ -52,6 +53,7 @@
   vertical-align: middle;
   color: var(--text-gray);
   margin-top: 4rem;
+  text-align: justify;
 }
 
 .gallery-about-us {
@@ -139,4 +141,47 @@
   line-height: 28px;
   letter-spacing: 0%;
   vertical-align: middle;
+}
+
+@media (max-width: 1199px) {
+  .hero-bg {
+    right: 0;
+  }
+  .gallery-about-us {
+    flex-wrap: wrap;
+  }
+  .gallery-about-us li {
+    margin-bottom: 5rem;
+  }
+  .awards-list {
+    justify-content: space-evenly;
+  }
+}
+@media (max-width: 767px) {
+  .hero-section {
+    display: grid;
+  }
+  .gallery-about-us {
+    justify-content: space-evenly;
+  }
+}
+@media (max-width: 479px) {
+  .hero-bg {
+    display: none;
+  }
+  .hero-title::after {
+    bottom: -2rem;
+  }
+  .hero-typo p {
+    width: 90vw;
+  }
+  .hero-p {
+    width: 90vw;
+  }
+  .gallery-about-us {
+    justify-content: center;
+  }
+  .awards-list {
+    justify-content: center;
+  }
 }/*# sourceMappingURL=m_styles.css.map */

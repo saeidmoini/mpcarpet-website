@@ -455,3 +455,74 @@ $font-thin: "IRANYekanX-Thin";
         height: 100%;
     }
 }
+
+// responsive
+@media (max-width: 1439px) {
+    // empty
+}
+@media (max-width: 1199px) {
+    .map {
+        width: 100%;
+        max-width: 78.1rem;
+        img {
+            height: auto;
+        }
+    }
+    .company-address {
+        width: 100%;
+    }
+}
+@media (max-width: 1023px) {
+    .contact-form-section {
+        flex-direction: column;
+
+    }
+    .contact-info {
+        margin-bottom: 5rem;
+    }
+    .contact-form {
+        margin-right: 0;
+    }
+    .contact-map-section {
+        flex-direction: column-reverse;
+    }
+    .company-adresses {
+        margin-top: 5rem;
+    }
+
+}
+@media (max-width: 767px)  {
+    .slider-container {
+        width: 100vw;
+    }
+    .hero-typo {
+        margin-top: 20%;
+    }
+    .slider-style {
+        display: none;
+    }
+    .map-typo-art {
+        width: 100%;
+        left: 0;
+        img {
+            height: auto;
+        }
+    }
+}
+@media (max-width: 479px)  {
+    .hero-typo {
+        margin-right: 16%;
+    }
+    .contact-map {
+        display: none;
+    }
+    .background-art {
+        width: 100%;
+    }
+    .city-list {
+        width: 100%;
+    }
+    .gallery-title {
+        margin: 0 1rem;
+    }
+}
