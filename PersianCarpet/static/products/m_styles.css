@@ -245,6 +245,7 @@
   max-height: -moz-max-content;
   max-height: max-content;
   margin-bottom: 6.4rem;
+  color: var(--text-gray);
 }
 
 .product-img {
@@ -337,7 +338,6 @@
   font-size: 16px;
   line-height: 32px;
   letter-spacing: 0;
-  text-align: right;
   vertical-align: middle;
   color: var(--text-gray);
   text-align: justify;
@@ -351,7 +351,7 @@
 
 .agents-map {
   position: absolute;
-  left: -8%;
+  left: -5%;
   top: 0;
 }
 
@@ -414,12 +414,11 @@
 @media (max-width: 767px) {
   .hero-section {
     align-items: center;
+    flex-direction: column;
   }
   .hero-slider {
     margin-top: 10rem;
-  }
-  .hero-section {
-    flex-direction: column;
+    display: none;
   }
   .gallery-typo-art {
     display: none;
@@ -429,9 +428,6 @@
   }
   .agents-section .artistry-typo {
     bottom: 25%;
-  }
-  .hero-slider {
-    display: none;
   }
 }
 @media (max-width: 479px) {

@@ -251,6 +251,7 @@ $font-thin: "IRANYekanX-Thin";
         justify-content: flex-start;
         margin-bottom: 2.4rem;
         span {
+            margin: 0;
             margin-bottom: 2.4rem;
             font-weight: 400;
             font-style: Regular;
@@ -259,7 +260,6 @@ $font-thin: "IRANYekanX-Thin";
             letter-spacing: 0%;
             color: var(--text-gray);
             color: white;
-            margin: 0;
             &:first-of-type {
                 margin: 0 .8rem;
                 color: var(--accent-second);
@@ -329,6 +329,29 @@ $font-thin: "IRANYekanX-Thin";
         color: var(--text-gray);
         background-color: var(--accent-main);
         border: none;
+    }
+}
+/* CAPTCHA Field Styling */
+.captcha-field {
+    margin-bottom: 1.6rem;
+    background-color: #f5f5f5;
+    padding: 1.2rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    label {
+        color: var(--gray-700);
+        font-weight: 600;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        text-align: right;
+        direction: ltr;
+    }
+    input {
+        width: 100%;
+        text-align: center !important;
+        background-color: white;
     }
 }
 .form-success, .message-help{

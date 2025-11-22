@@ -150,7 +150,7 @@
                     </li>
                 </ul>
             </div>
-            <form action="{% url 'contact' %}" method="post" class="contact-form">
+            <form action="{% url 'contact' %}" method="post" class="contact-form" id="contact-form">
                 {% csrf_token %}
                 {% if request.GET.sent %}
                     <div class="form-success">پیام شما با موفقیت ارسال شد.</div>
@@ -170,6 +170,12 @@
                 <input type="email" name="email" id="formEmail" placeholder="ایمیل *" required value="{{ form.email.value|default:'' }}">
                 <textarea name="message" id="formMessage" placeholder="متن پیام ..." rows="6" maxlength="5000" aria-describedby="messageHelp">{{ form.message.value|default:'' }}</textarea>
                 <div id="messageHelp" class="message-help" aria-live="polite"></div>
+                
+                <div class="captcha-field">
+                    <label for="captcha_answer">{{ captcha_question }} = ؟</label>
+                    <input type="number" name="captcha_answer" id="captcha_answer" placeholder="جواب کپچا *" required min="0" max="999">
+                </div>
+                
                 <button type="submit">ارسال</button>
             </form>
         </section>

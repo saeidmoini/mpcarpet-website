@@ -254,6 +254,7 @@ $font-thin: "IRANYekanX-Thin";
     height: auto;
     max-height: max-content;
     margin-bottom: 6.4rem;
+    color: var(--text-gray);
 }
 .product-img {
     width: 100%;
@@ -344,7 +345,6 @@ $font-thin: "IRANYekanX-Thin";
     font-size: 16px;
     line-height: 32px;
     letter-spacing: 0;
-    text-align: right;
     vertical-align: middle;
     color: var(--text-gray);
     text-align: justify;
@@ -356,7 +356,7 @@ $font-thin: "IRANYekanX-Thin";
 }
 .agents-map {
     position: absolute;
-    left: -8%;
+    left: -5%;
     top: 0;
 }
 .artistry-cta {
@@ -399,12 +399,6 @@ $font-thin: "IRANYekanX-Thin";
     // empty
 }
 @media (max-width: 1199px) {
-    // .gallery-cta {
-    //     right: 16.8%;
-    // }
-    // .gallery-swiper-navs {
-    //     right: 11.4%;
-    // }
     .gallery {
         padding-right: 0;
     }
@@ -413,9 +407,6 @@ $font-thin: "IRANYekanX-Thin";
     }
 }
 @media (max-width: 1023px) {
-    // .gallery-cta {
-    //     right: 19.7%;
-    // }
     .artistry-typo {
         width: 40%;
     }
@@ -430,12 +421,11 @@ $font-thin: "IRANYekanX-Thin";
 @media (max-width: 767px)  {
     .hero-section {
         align-items: center;
+        flex-direction: column;
     }
     .hero-slider {
         margin-top: 10rem;
-    }
-    .hero-section {
-        flex-direction: column;
+        display: none;
     }
     .gallery-typo-art {
         display: none;
@@ -449,15 +439,10 @@ $font-thin: "IRANYekanX-Thin";
             bottom: 25%;
         }
     } 
-    .hero-slider {
-        display: none;
-    }
 }
 @media (max-width: 479px)  {
     .artistry {
         height: max-content;
-    }
-    .artistry {
         .background-art {
             position: relative;
         }

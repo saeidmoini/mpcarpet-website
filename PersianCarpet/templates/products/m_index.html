@@ -93,114 +93,29 @@
     {% comment %} products {% endcomment %}
     <div class="container">
         <ul class="product-list">
+            {% for p in products %}
             <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
+                <figure class="product-img">
+                    {% if p.image %}
+                        <img src="{{ p.image.url }}" alt="{{ p.title }}">
+                    {% else %}
+                        <img src="{% static 'imgs/gallery-swiper.png' %}" alt="{{ p.title }}">
+                    {% endif %}
+                </figure>
+                <h2 class="product-title">{{ p.title }}</h2>
+                {% if p.specs %}
                 <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
+                    {% for spec in p.specs_list %}
+                        <li>{{ spec }}</li>
+                    {% endfor %}
                 </ul>
+                {% elif p.description %}
+                <p class="product-desc">{{ p.description }}</p>
+                {% endif %}
             </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
-            <li class="product-card">
-                <figure class="product-img"><img src="{% static 'imgs/gallery-swiper.png' %}" alt="product image"></figure>
-                <h2 class="product-title">فرش آذین </h2>
-                <ul class="product-desc">
-                    <li>۳۰۰ شانه</li>
-                    <li>تراکم ۹۶۰</li>
-                    <li>پلی پروپیلین</li>
-                </ul>
-            </li>
+            {% empty %}
+            <li class="product-card">فعلا محصولی جهت نمایش وجود ندارد.</li>
+            {% endfor %}
         </ul>
     </div>
     {% comment %} agents section {% endcomment %}
