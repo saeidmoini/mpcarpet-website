@@ -18,6 +18,7 @@ static/*
 !static/fonts
 media/
 db.sqlite3
+project.db
 *.db
 instance/
 
