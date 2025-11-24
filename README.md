@@ -60,7 +60,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-2. **Create `.env` file:**
+1. **Create `.env` file:**
 
 ```bash
 # Create .env file with required variables
@@ -73,7 +73,7 @@ CSRF_TRUSTED_ORIGINS=https://your-domain.com
 EOF
 ```
 
-3. **Set proper permissions for `.env`:**
+1. **Set proper permissions for `.env`:**
 
 ```bash
 # CRITICAL: .env must be readable by the application user (carpet)
@@ -81,13 +81,13 @@ sudo chown carpet:www-data .env
 sudo chmod 640 .env
 ```
 
-4. **Run migrations:**
+1. **Run migrations:**
 
 ```bash
 python manage.py migrate
 ```
 
-5. **Collect static files:**
+1. **Collect static files:**
 
 ```bash
 python manage.py collectstatic --noinput

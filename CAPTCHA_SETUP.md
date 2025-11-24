@@ -1,11 +1,13 @@
 # CAPTCHA Setup Guide for Contact Form
 
 ## Overview
+
 A simple math-based CAPTCHA has been successfully integrated into your contact form (`contact-form`). This provides protection against bots and automated form submissions without requiring external API keys.
 
 ## Implementation Details
 
 ### How It Works
+
 1. **Math Problem Generation**: When users visit the contact form, a simple math problem (e.g., "5 + 3") is generated
 2. **Session Storage**: The correct answer is stored in the user's session
 3. **User Input**: Users must solve the math problem and enter the answer
@@ -15,26 +17,30 @@ A simple math-based CAPTCHA has been successfully integrated into your contact f
 ### What Was Changed
 
 #### 1. **Views.py** (`PersianCarpet/views.py`)
-   - Added `SimpleCaptchaField` custom form field class
-   - Added `captcha_answer` field to `ContactForm`
-   - Updated `ContactView.get()` to generate and store CAPTCHA questions
-   - Updated `ContactView.post()` to validate CAPTCHA before accepting submissions
-   - CAPTCHA regenerates on validation failure
+
+- Added `SimpleCaptchaField` custom form field class
+- Added `captcha_answer` field to `ContactForm`
+- Updated `ContactView.get()` to generate and store CAPTCHA questions
+- Updated `ContactView.post()` to validate CAPTCHA before accepting submissions
+- CAPTCHA regenerates on validation failure
 
 #### 2. **Template** (`PersianCarpet/templates/contact-us/m_index.html`)
-   - Added CAPTCHA input field displaying the math problem
-   - Form now has `id="contact-form"` for reference
-   - RTL-compatible layout with Persian labels
+
+- Added CAPTCHA input field displaying the math problem
+- Form now has `id="contact-form"` for reference
+- RTL-compatible layout with Persian labels
 
 #### 3. **CSS Styling** (`PersianCarpet/static/contact-us/m_styles.css`)
-   - Added `.captcha-field` styles for the CAPTCHA container
-   - Light gray background to distinguish from other form fields
-   - Centered number input for clean appearance
-   - RTL-compatible label positioning
+
+- Added `.captcha-field` styles for the CAPTCHA container
+- Light gray background to distinguish from other form fields
+- Centered number input for clean appearance
+- RTL-compatible label positioning
 
 #### 4. **Settings** (`PersianCarpet/settings.py`)
-   - No external packages required (uses Django built-in features)
-   - Sessions middleware handles CAPTCHA storage
+
+- No external packages required (uses Django built-in features)
+- Sessions middleware handles CAPTCHA storage
 
 ## Features
 
@@ -48,6 +54,7 @@ A simple math-based CAPTCHA has been successfully integrated into your contact f
 ## How It Looks
 
 Users will see:
+
 ```
 5 + 3 = ؟
 [Input field for answer]
@@ -80,6 +87,7 @@ Users will see:
 ## Customization
 
 ### Change CAPTCHA Difficulty
+
 Edit `PersianCarpet/views.py` in the `ContactView.get()` method:
 
 ```python
@@ -97,6 +105,7 @@ num2 = random.randint(1, 5)
 ```
 
 ### Add Subtraction or Multiplication
+
 In `ContactView.get()` and `ContactView.post()`, you can add more operations:
 
 ```python
@@ -106,6 +115,7 @@ captcha_answer = operation(num1, num2)
 ```
 
 ### Customize CAPTCHA Labels
+
 Change the Persian text in `PersianCarpet/templates/contact-us/m_index.html`:
 
 ```html
@@ -119,16 +129,19 @@ Change the Persian text in `PersianCarpet/templates/contact-us/m_index.html`:
 ## Troubleshooting
 
 ### CAPTCHA Field Not Showing
+
 - Check that `'django.contrib.sessions'` is in `INSTALLED_APPS` (it should be)
 - Verify middleware includes `'django.contrib.sessions.middleware.SessionMiddleware'`
 - Clear browser cache and try again
 
 ### "CAPTCHA Answer is Incorrect" Error When Correct
+
 - Browser may have cached old session
 - Clear cookies for the domain
 - Try in an incognito/private browser window
 
 ### Math Problem Not Generating
+
 - Ensure `random` module is imported in `views.py`
 - Check that `get()` method is being called (visit form without POST)
 
@@ -159,6 +172,6 @@ The current implementation provides solid protection without external dependenci
 ---
 
 For more information about Django sessions and forms:
+
 - [Django Sessions Documentation](https://docs.djangoproject.com/en/3.1/topics/http/sessions/)
 - [Django Forms Documentation](https://docs.djangoproject.com/en/3.1/topics/forms/)
-

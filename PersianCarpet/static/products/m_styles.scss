@@ -439,6 +439,9 @@ $font-thin: "IRANYekanX-Thin";
             bottom: 25%;
         }
     } 
+    .agents-map {
+        display: none;
+    }
 }
 @media (max-width: 479px)  {
     .artistry {

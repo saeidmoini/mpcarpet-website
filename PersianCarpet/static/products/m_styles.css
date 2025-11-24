@@ -429,6 +429,9 @@
   .agents-section .artistry-typo {
     bottom: 25%;
   }
+  .agents-map {
+    display: none;
+  }
 }
 @media (max-width: 479px) {
   .artistry {

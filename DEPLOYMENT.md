@@ -49,6 +49,7 @@ nano .env
 ```
 
 Add the following variables:
+
 ```
 SECRET_KEY=your-very-long-random-secret-key-here
 DEBUG=False
@@ -57,6 +58,7 @@ CSRF_TRUSTED_ORIGINS=https://your-domain.com,http://194.33.105.129
 ```
 
 **Set proper permissions:**
+
 ```bash
 # CRITICAL: Application user (carpet) must be able to read .env
 sudo chown carpet:www-data .env
@@ -93,6 +95,7 @@ sudo nano /etc/systemd/system/persian-carpet.service
 ```
 
 Add the following:
+
 ```ini
 [Unit]
 Description=Gunicorn daemon for PersianCarpet
@@ -111,6 +114,7 @@ WantedBy=multi-user.target
 ```
 
 Enable and start service:
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable persian-carpet.service
@@ -126,6 +130,7 @@ sudo nano /etc/nginx/sites-available/persian-carpet
 ```
 
 Add the following:
+
 ```nginx
 server {
     listen 80;
@@ -149,6 +154,7 @@ server {
 ```
 
 Enable site:
+
 ```bash
 sudo ln -s /etc/nginx/sites-available/persian-carpet /etc/nginx/sites-enabled/
 sudo nginx -t
@@ -222,6 +228,7 @@ echo "Update complete!"
 ```
 
 Make it executable:
+
 ```bash
 chmod +x update.sh
 ```
@@ -231,11 +238,13 @@ chmod +x update.sh
 ### Permission Denied on `.env`
 
 **Error:**
+
 ```
 PermissionError: [Errno 13] Permission denied: '/home/carpet/mpcarpet-website/.env'
 ```
 
 **Solution:**
+
 ```bash
 sudo chown carpet:www-data /home/carpet/mpcarpet-website/.env
 sudo chmod 640 /home/carpet/mpcarpet-website/.env
@@ -245,10 +254,12 @@ sudo systemctl restart persian-carpet.service
 ### Static Files Not Loading
 
 **Symptoms:**
+
 - 404 errors for CSS/JS/images
 - Broken styling on website
 
 **Solution:**
+
 ```bash
 # Recollect static files
 python manage.py collectstatic --noinput --clear
@@ -264,17 +275,20 @@ sudo systemctl reload nginx
 ### 500 Server Error
 
 **Check Gunicorn logs:**
+
 ```bash
 sudo journalctl -u persian-carpet.service -n 100 --no-pager
 ```
 
 **Common causes:**
+
 1. `.env` file permissions (see above)
 2. Missing environment variables in `.env`
 3. Database migration issues
 4. Missing dependencies
 
 **Debug steps:**
+
 ```bash
 # Check service status
 sudo systemctl status persian-carpet.service
@@ -289,11 +303,13 @@ python manage.py runserver 0.0.0.0:8000
 ### Gunicorn Not Starting
 
 **Check logs:**
+
 ```bash
 sudo journalctl -u persian-carpet.service -f
 ```
 
 **Verify:**
+
 - `.env` file exists and has correct permissions
 - Virtual environment is activated
 - All dependencies are installed
@@ -316,4 +332,3 @@ sudo journalctl -u persian-carpet.service -f
 | `media/` | carpet:www-data | 755 | User uploaded files |
 | `venv/` | carpet:carpet | 755 | Virtual environment |
 | Project root | carpet:carpet | 755 | Application files |
-

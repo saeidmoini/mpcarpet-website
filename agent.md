@@ -8,6 +8,7 @@
 - Updated project documentation (`README.md`) with the current phase summary and developer notes.
 
 ### Notes for Next Phase
+
 - Introduce a shared base template and restructure page templates to extend it.
 - Normalize navbar/footer includes (remove embedded `<head>` tags) and fix link targets using Django `url` tags.
 - Consolidate font assets and audit static references ahead of responsive adjustments.
@@ -18,6 +19,7 @@
 - Updated docs to reflect ongoing template migration and the plan for visual regression safeguards.
 
 ### Notes for Next Phase
+
 - Consolidate fonts/assets under consistent static paths and replace bare `img/...` references with `{% static %}`.
 - Introduce responsive breakpoints and accessibility tweaks while maintaining Figma alignment.
 - Prepare data structures or CMS placeholders for dynamic content (gallery, products, contact form).
@@ -30,7 +32,7 @@
 - Extracted shared contact details into `components/fragments/` includes to ease the eventual CMS hand-off, and refreshed the README Phase 3 summary.
 
 ### Notes for Next Phase
+
 - Parameterise the new fragments via context or CMS models once templates move off static copy.
 - Replace scale-based responsive fallback with semantic layout tweaks once design sign-off allows structural adjustments.
 - Connect gallery/product CTAs to dynamic slugs when the CMS schema is defined.
-

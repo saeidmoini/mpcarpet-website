@@ -16,7 +16,6 @@ urlpatterns = [
     path('home/', TemplateView.as_view(template_name='home/index.html'), name='home-slider'),
     path('home-video/', TemplateView.as_view(template_name='home/m_index.html'), name='home-video'),
     path('products/', ProductListView.as_view(), name='products'),
-    # path('products_demo/', TemplateView.as_view(template_name='products/m_index.html'), name='products'),
     path('about-us/', TemplateView.as_view(template_name='about-us/m_index.html'), name='about'),
     path('contact-us/', ContactView.as_view(), name='contact'),
 ]
