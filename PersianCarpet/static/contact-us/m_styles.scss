@@ -533,6 +533,9 @@ $font-thin: "IRANYekanX-Thin";
     }
 }
 @media (max-width: 479px)  {
+    .slider-container {
+        height: 70rem;
+    }
     .hero-typo {
         margin-right: 16%;
     }
@@ -547,5 +550,33 @@ $font-thin: "IRANYekanX-Thin";
     }
     .gallery-title {
         margin: 0 1rem;
+    }
+    .company-info {
+        li {
+            flex-wrap: wrap;
+            span {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+@media (max-width: 320px) {
+    .hero-title {
+        &::after {
+            width: 90%;
+        }
+    }
+    .hero-slider {
+        display: none;
+    }
+    .hero-typo {
+        margin-right: 5%;
+    }
+    .company-address {
+        height: auto;
+    }
+    .background-art {
+        height: auto;
+        margin-bottom: 2rem;
     }
 }

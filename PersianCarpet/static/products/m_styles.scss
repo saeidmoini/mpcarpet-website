@@ -483,3 +483,28 @@ $font-thin: "IRANYekanX-Thin";
         margin-top: 5rem;
     }
 }
+@media (max-width: 320px) {
+    .hero-title {
+        &::after {
+            width: 90%;
+        }
+    }
+    .product-img {
+        height: 40rem;
+    }
+    .product-desc {
+        flex-wrap: wrap;
+    }
+    .product-desc {
+        li {
+            margin-bottom: .5rem;
+        }
+    }
+    .agents-section {
+        .background-art {
+            width: 100%;
+            height: auto;
+            padding-bottom: 3rem;
+        }
+    }
+}
