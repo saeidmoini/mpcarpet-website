@@ -36,15 +36,16 @@ run_as_app() {
 
 cd "$PROJECT_DIR"
 
-echo "Resetting repository to origin/$BRANCH (fresh state)..."
+# Protect local SQLite DB from git complaints (no data deletion)
+if [ -f "$DB_FILE" ]; then
+    run_as_app "cd '$PROJECT_DIR' && git update-index --skip-worktree project.db || true"
+fi
+
+echo "Updating repository to origin/$BRANCH..."
 run_as_app "cd '$PROJECT_DIR' && git fetch origin '$BRANCH'"
 run_as_app "cd '$PROJECT_DIR' && git reset --hard 'origin/$BRANCH'"
-run_as_app "cd '$PROJECT_DIR' && git clean -fd"
 
-echo "Removing existing SQLite database (fresh test data)..."
-rm -f "$DB_FILE" "${DB_FILE}-shm" "${DB_FILE}-wal"
-
-echo "Activating virtual environment..."
+echo "Activating virtual environment and installing dependencies..."
 run_as_app "source '$VENV/bin/activate' && cd '$PROJECT_DIR' && pip install -r requirements.txt"
 
 echo "Running migrations..."
@@ -58,11 +59,14 @@ chown -R "$APP_USER:$APP_GROUP" "$PROJECT_DIR"
 chmod 775 "$PROJECT_DIR"
 if [ -f "$DB_FILE" ]; then
     chmod 664 "$DB_FILE"
+    rm -f "${DB_FILE}-shm" "${DB_FILE}-wal"
 fi
 if [ -f "$PROJECT_DIR/.env" ]; then
+    chown "$APP_USER:$APP_GROUP" "$PROJECT_DIR/.env"
     chmod 640 "$PROJECT_DIR/.env"
 fi
 if [ -d "$STATIC_DIR" ]; then
+    chown -R "$APP_USER:$APP_GROUP" "$STATIC_DIR"
     chmod -R 755 "$STATIC_DIR"
 fi
 
