@@ -6,6 +6,7 @@
 BRANCH=${1:-main}
 PROJECT_DIR="/home/carpet/mpcarpet-website"
 STATIC_DIR="$PROJECT_DIR/static"
+DB_FILE="$PROJECT_DIR/project.db"
 
 echo "========================================="
 echo "Persian Carpet Website Update Script"
@@ -59,6 +60,25 @@ python manage.py collectstatic --noinput || {
     echo "Error: collectstatic failed"
     exit 1
 }
+
+# Fix permissions for project directory and database
+echo "Fixing permissions for project directory and database..."
+chown carpet:carpet "$PROJECT_DIR" || {
+    echo "Warning: Failed to change ownership of project directory"
+}
+chmod 775 "$PROJECT_DIR" || {
+    echo "Warning: Failed to change permissions of project directory"
+}
+if [ -f "$DB_FILE" ]; then
+    chown carpet:carpet "$DB_FILE" || {
+        echo "Warning: Failed to change ownership of project.db"
+    }
+    chmod 664 "$DB_FILE" || {
+        echo "Warning: Failed to change permissions of project.db"
+    }
+    # Remove SQLite lock files if present
+    rm -f "${DB_FILE}-shm" "${DB_FILE}-wal"
+fi
 
 # Fix permissions for static files
 echo "Fixing permissions for static files..."
@@ -115,4 +135,3 @@ echo "1. Check website: http://your-domain.com"
 echo "2. Check Gunicorn logs: sudo journalctl -u persian-carpet.service -n 50"
 echo "3. Check Nginx logs: sudo tail -f /var/log/nginx/error.log"
 echo ""
-
