@@ -36,14 +36,9 @@ run_as_app() {
 
 cd "$PROJECT_DIR"
 
-# Protect local SQLite DB from git complaints (no data deletion)
-if [ -f "$DB_FILE" ]; then
-    run_as_app "cd '$PROJECT_DIR' && git update-index --skip-worktree project.db || true"
-fi
-
 echo "Updating repository to origin/$BRANCH..."
 run_as_app "cd '$PROJECT_DIR' && git fetch origin '$BRANCH'"
-run_as_app "cd '$PROJECT_DIR' && git reset --hard 'origin/$BRANCH'"
+run_as_app "cd '$PROJECT_DIR' && git pull --ff-only origin '$BRANCH'"
 
 echo "Activating virtual environment and installing dependencies..."
 run_as_app "source '$VENV/bin/activate' && cd '$PROJECT_DIR' && pip install -r requirements.txt"
