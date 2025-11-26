@@ -519,6 +519,9 @@
   .company-adresses {
     margin-top: 5rem;
   }
+  .hero-title::after {
+    width: 29rem;
+  }
 }
 @media (max-width: 767px) {
   .slider-container {

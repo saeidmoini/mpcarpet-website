@@ -452,6 +452,9 @@
   .agents-section .background-art {
     position: relative;
     top: 0;
+    width: 100%;
+    height: auto;
+    padding-bottom: 2rem;
   }
   .agents-section .artistry-typo {
     width: 100%;
