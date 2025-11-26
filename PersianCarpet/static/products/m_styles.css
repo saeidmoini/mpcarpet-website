@@ -410,6 +410,9 @@
   .product-list {
     grid-template-columns: repeat(2, 1fr);
   }
+  .hero-title::after {
+    width: 29rem;
+  }
 }
 @media (max-width: 767px) {
   .hero-section {
