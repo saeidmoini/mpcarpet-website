@@ -45,8 +45,12 @@ footer {
   height: 100%;
 }
 
-.footer-address,
 .footer-number {
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+.footer-address {
   font-size: 1.8rem;
 }
 

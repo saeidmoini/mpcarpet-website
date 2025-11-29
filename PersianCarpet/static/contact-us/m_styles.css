@@ -249,7 +249,6 @@
 }
 .company-info li span {
   margin: 0;
-  margin-bottom: 2.4rem;
   font-weight: 400;
   font-style: Regular;
   font-size: 16px;
@@ -261,6 +260,16 @@
 .company-info li span:first-of-type {
   margin: 0 0.8rem;
   color: var(--accent-second);
+}
+.company-info li a {
+  margin: 0;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0%;
+  color: var(--text-gray);
+  color: white;
 }
 
 .icon {
@@ -471,6 +480,7 @@
 }
 
 .map {
+  position: relative;
   width: 78.1rem;
   height: 71.7rem;
   margin-top: 2rem;
@@ -478,6 +488,120 @@
 .map img {
   width: 100%;
   height: 100%;
+}
+
+.map-pin {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.map-pin img {
+  width: 100%;
+  height: 100%;
+}
+.map-pin::before {
+  content: attr(data-city);
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-0.8rem);
+  background-color: rgba(36, 36, 38, 0.9);
+  color: var(--text-gray);
+  box-shadow: 0 0 1rem rgba(24, 24, 27, 0.9);
+  padding: 0.6rem 1rem;
+  font-family: "IRANYekanX-Medium";
+  font-size: 1.2rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.map-pin::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-top: 0.5rem solid rgba(36, 36, 38, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.map-pin:hover::before, .map-pin:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.map-pin#pinMashhad {
+  top: 19rem;
+  right: 19.8rem;
+}
+.map-pin#pinTehran {
+  top: 21rem;
+  right: 49.4rem;
+}
+.map-pin#pinEsfahan {
+  top: 32.5rem;
+  right: 48.5rem;
+}
+.map-pin#pinTabriz {
+  top: 8.5rem;
+  right: 68.5rem;
+}
+.map-pin#pinShiraz {
+  top: 47rem;
+  right: 40rem;
+}
+.map-pin#pinKerman {
+  top: 44rem;
+  right: 18rem;
+}
+.map-pin#pinKhuzestan {
+  top: 37rem;
+  right: 59rem;
+}
+.map-pin#pinBoroojen {
+  top: 35rem;
+  right: 52rem;
+}
+.map-pin#pinBandarAnzali {
+  top: 14rem;
+  right: 55rem;
+}
+.map-pin#pinBandarAbbas {
+  top: 60rem;
+  right: 29rem;
+}
+.map-pin#pinBirjand {
+  top: 32rem;
+  right: 20rem;
+}
+.map-pin#pinTaybaad {
+  top: 25rem;
+  right: 14rem;
+}
+.map-pin#pinChenaran {
+  top: 17rem;
+  right: 23rem;
+}
+.map-pin#pinForus {
+  top: 18rem;
+  right: 15rem;
+}
+.map-pin#pinKashmar {
+  top: 25rem;
+  right: 22rem;
+}
+.map-pin#pinGonabad {
+  top: 30rem;
+  right: 22rem;
 }
 
 .map-typo-art {

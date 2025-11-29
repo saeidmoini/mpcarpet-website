@@ -252,7 +252,6 @@ $font-thin: "IRANYekanX-Thin";
         margin-bottom: 2.4rem;
         span {
             margin: 0;
-            margin-bottom: 2.4rem;
             font-weight: 400;
             font-style: Regular;
             font-size: 16px;
@@ -264,6 +263,16 @@ $font-thin: "IRANYekanX-Thin";
                 margin: 0 .8rem;
                 color: var(--accent-second);
             }
+        }
+        a {
+            margin: 0;
+            font-weight: 400;
+            font-style: Regular;
+            font-size: 16px;
+            line-height: 28px;
+            letter-spacing: 0%;
+            color: var(--text-gray);
+            color: white;
         }
     }
 }
@@ -460,12 +469,133 @@ $font-thin: "IRANYekanX-Thin";
     position: relative;
 }
 .map {
+    position: relative;
     width: 78.1rem;
     height: 71.7rem;
     margin-top: 2rem;
     img {
         width: 100%;
         height: 100%;
+    }
+}
+.map-pin {
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    
+    // Tooltip styling
+    &::before {
+        content: attr(data-city);
+        position: absolute;
+        bottom: 1.5rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(-0.8rem);
+        background-color: rgba(36, 36, 38, 0.9);
+        color: var(--text-gray);
+        box-shadow: 0 0 1rem rgba(24, 24, 27, 0.9);
+        padding: 0.6rem 1rem;
+        font-family: $font-medium;
+        font-size: 1.2rem;
+        white-space: nowrap;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    // Arrow pointer for tooltip
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 0.5rem solid transparent;
+        border-right: 0.5rem solid transparent;
+        border-top: 0.5rem solid rgba(36, 36, 38, 0.9);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    &:hover::before,
+    &:hover::after {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    &#pinMashhad {
+        top: 19rem;
+        right: 19.8rem;
+    }
+    &#pinTehran {
+        top: 21rem;
+        right: 49.4rem;
+    }
+    &#pinEsfahan {
+        top: 32.5rem;
+        right: 48.5rem;
+    }
+    &#pinTabriz {
+        top: 8.5rem;
+        right: 68.5rem;
+    }
+    &#pinShiraz {
+        top: 47rem;
+        right: 40rem;
+    }
+    &#pinKerman {
+        top: 44rem;
+        right: 18rem;
+    }
+    &#pinKhuzestan {
+        top: 37rem;
+        right: 59rem;
+    }
+    &#pinBoroojen {
+        top: 35rem;
+        right: 52rem;
+    }
+    &#pinBandarAnzali {
+        top: 14rem;
+        right: 55rem;
+    }
+    &#pinBandarAbbas {
+        top: 60rem;
+        right: 29rem;
+    }
+    &#pinBirjand {
+        top: 32rem;
+        right: 20rem;
+    }
+    &#pinTaybaad {
+        top: 25rem;
+        right: 14rem;
+    }
+    &#pinChenaran {
+        top: 17rem;
+        right: 23rem;
+    }
+    &#pinForus {
+        top: 18rem;
+        right: 15rem;
+    }
+    &#pinKashmar {
+        top: 25rem;
+        right: 22rem;
+    }
+    &#pinGonabad {
+        top: 30rem;
+        right: 22rem;
     }
 }
 .map-typo-art {
