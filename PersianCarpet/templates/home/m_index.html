@@ -398,22 +398,31 @@ let lastScrollY = window.scrollY;
 
 const WHEEL_SENSITIVITY = 0.0005; // slightly increased for snappier scroll
 const TOUCH_SENSITIVITY = 0.002; // slightly increased for smoother, faster touch scrubbing
-const SMOOTHING = 0.18; // lerp factor (0-1), higher = faster catch-up
+const SMOOTHING = 0.34; // lerp for catch-up (keep moderate)
 
 let targetTime = 0; // desired video time (set by interactions)
 let displayedTime = 0; // smoothed time applied to video.currentTime
+let lastAppliedTime = 0;
+let lastSeekTime = 0;
+// Increase these to reduce seek frequency (less work for the decoder)
+const MIN_SEEK_DELTA = 0.12; // only seek when displayedTime changed this much (seconds)
+const MIN_SEEK_INTERVAL = 100; // ms between seeks -> ~10fps max seeking
 
-// smoothing RAF loop: lerp displayedTime toward targetTime
+// smoothing RAF loop: lerp displayedTime toward targetTime and throttle seeks
 function startSmoothingLoop() {
     function tick() {
         if (video && video.duration) {
             displayedTime += (targetTime - displayedTime) * SMOOTHING;
-            // only update video.currentTime when difference is noticeable
-            if (Math.abs(displayedTime - video.currentTime) > 0.02) {
+            const now = performance.now();
+            const delta = Math.abs(displayedTime - lastAppliedTime);
+
+            if (delta > MIN_SEEK_DELTA && (now - lastSeekTime) > MIN_SEEK_INTERVAL) {
                 try {
                     video.currentTime = displayedTime;
+                    lastAppliedTime = displayedTime;
+                    lastSeekTime = now;
                 } catch (err) {
-                    // Some browsers may throw if seeking too rapidly; ignore and continue
+                    // ignore transient seek errors
                 }
             }
         }
