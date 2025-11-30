@@ -399,7 +399,7 @@ let lastScrollY = window.scrollY;
 
 const WHEEL_SENSITIVITY = 0.0005; // slightly increased for snappier scroll
 const TOUCH_SENSITIVITY = 0.002; // slightly increased for smoother, faster touch scrubbing
-const SMOOTHING = 0.34; // lerp for catch-up (keep moderate)
+const SMOOTHING = 0.12; // lerp for catch-up (keep moderate)
 
 let targetTime = 0; // desired video time (set by interactions)
 let displayedTime = 0; // smoothed time applied to video.currentTime
