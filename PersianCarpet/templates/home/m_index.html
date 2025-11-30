@@ -396,6 +396,33 @@ let state = "idle";
 let scrollPos = 0;
 let lastScrollY = window.scrollY;
 
+const WHEEL_SENSITIVITY = 0.0005; // slightly increased for snappier scroll
+const TOUCH_SENSITIVITY = 0.002; // slightly increased for smoother, faster touch scrubbing
+const SMOOTHING = 0.18; // lerp factor (0-1), higher = faster catch-up
+
+let targetTime = 0; // desired video time (set by interactions)
+let displayedTime = 0; // smoothed time applied to video.currentTime
+
+// smoothing RAF loop: lerp displayedTime toward targetTime
+function startSmoothingLoop() {
+    function tick() {
+        if (video && video.duration) {
+            displayedTime += (targetTime - displayedTime) * SMOOTHING;
+            // only update video.currentTime when difference is noticeable
+            if (Math.abs(displayedTime - video.currentTime) > 0.02) {
+                try {
+                    video.currentTime = displayedTime;
+                } catch (err) {
+                    // Some browsers may throw if seeking too rapidly; ignore and continue
+                }
+            }
+        }
+        requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+}
+startSmoothingLoop();
+
 // -------------------------------------------------
 // OBSERVER – No autoplay, but re-enable scrubbing when entering viewport
 // -------------------------------------------------
@@ -415,7 +442,7 @@ const observer = new IntersectionObserver(
 observer.observe(videoSection);
 
 // -------------------------------------------------
-// SCROLL → SCRUB VIDEO
+// SCROLL → SCRUB VIDEO (wheel)
 // -------------------------------------------------
 window.addEventListener(
     "wheel",
@@ -433,11 +460,11 @@ window.addEventListener(
             e.preventDefault();
             state = "scrubbing";
 
-            scrollPos += deltaY * 0.00025;
+            scrollPos += deltaY * WHEEL_SENSITIVITY;
             scrollPos = Math.min(Math.max(scrollPos, 0), 1);
 
             if (video.duration) {
-                video.currentTime = scrollPos * video.duration;
+                targetTime = scrollPos * video.duration;
             }
 
             // Snap video section into view when scrolling up
@@ -467,6 +494,64 @@ window.addEventListener(
     },
     { passive: false }
 );
+
+// -------------------------------------------------
+// TOUCH → SCRUB VIDEO (mobile)
+// -------------------------------------------------
+let touchStartY = null;
+let isTouchScrubbing = false;
+
+videoSection.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    const rect = videoSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+        touchStartY = e.touches[0].clientY;
+        isTouchScrubbing = true;
+        state = 'scrubbing';
+        // prevent page from jumping while scrubbing
+        document.documentElement.style.overflow = 'hidden';
+        body.style.overflow = 'hidden';
+    }
+}, { passive: false });
+
+videoSection.addEventListener('touchmove', (e) => {
+    if (!isTouchScrubbing) return;
+    e.preventDefault();
+    const currentY = e.touches[0].clientY;
+    const deltaY = touchStartY - currentY; // positive when swiping up
+    touchStartY = currentY;
+
+    scrollPos += deltaY * TOUCH_SENSITIVITY;
+    scrollPos = Math.min(Math.max(scrollPos, 0), 1);
+
+    // set target time, actual video time will be smoothed by RAF loop
+    if (video.duration) {
+        targetTime = scrollPos * video.duration;
+    }
+
+    // If we reach the end, release and snap to next section
+    if (scrollPos >= 1) {
+        state = 'ended';
+        document.documentElement.style.overflow = 'auto';
+        body.style.overflow = 'auto';
+        isTouchScrubbing = false;
+        // make sure targetTime is at the end so RAF can snap the video
+        if (video.duration) targetTime = video.duration;
+        const nextSectionTop = videoSection.offsetTop + videoSection.offsetHeight;
+        window.scrollTo({ top: nextSectionTop, behavior: 'smooth' });
+    }
+}, { passive: false });
+
+videoSection.addEventListener('touchend', (e) => {
+    if (!isTouchScrubbing) return;
+    isTouchScrubbing = false;
+    touchStartY = null;
+    if (state !== 'ended') {
+        state = 'idle';
+        document.documentElement.style.overflow = 'auto';
+        body.style.overflow = 'auto';
+    }
+}, { passive: false });
 
 // -------------------------------------------------
 // Optional: Fallback end detection if video plays
