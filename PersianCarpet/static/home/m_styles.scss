@@ -5,6 +5,9 @@ $font-light: "IRANYekanX-Light";
 $font-medium: "IRANYekanX-Medium";
 $font-extrabold: "IRANYekanX-ExtraBold";
 $font-thin: "IRANYekanX-Thin";
+html, body {
+    overflow-x: hidden;
+}
 .hero {
     position: relative;
     display: grid;
