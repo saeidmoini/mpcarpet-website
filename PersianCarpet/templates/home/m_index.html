@@ -397,17 +397,17 @@ let state = "idle";
 let scrollPos = 0;
 let lastScrollY = window.scrollY;
 
-const WHEEL_SENSITIVITY = 0.0005; // slightly increased for snappier scroll
-const TOUCH_SENSITIVITY = 0.002; // slightly increased for smoother, faster touch scrubbing
-const SMOOTHING = 0.12; // lerp for catch-up (keep moderate)
+const WHEEL_SENSITIVITY = 0.00003; // slightly increased for snappier scroll
+const TOUCH_SENSITIVITY = 0.0002; // slightly increased for smoother, faster touch scrubbing
+const SMOOTHING = 1; // lerp for catch-up (keep moderate)
 
 let targetTime = 0; // desired video time (set by interactions)
 let displayedTime = 0; // smoothed time applied to video.currentTime
 let lastAppliedTime = 0;
 let lastSeekTime = 0;
 // Increase these to reduce seek frequency (less work for the decoder)
-const MIN_SEEK_DELTA = 0.12; // only seek when displayedTime changed this much (seconds)
-const MIN_SEEK_INTERVAL = 100; // ms between seeks -> ~10fps max seeking
+const MIN_SEEK_DELTA = 0.01; // only seek when displayedTime changed this much (seconds)
+const MIN_SEEK_INTERVAL = 10; // ms between seeks -> ~10fps max seeking
 
 // smoothing RAF loop: lerp displayedTime toward targetTime and throttle seeks
 function startSmoothingLoop() {
