@@ -330,8 +330,10 @@ $font-thin: "IRANYekanX-Thin";
 }
 // gallery swiper
 .swiper {
-    width: 100vw;
+    width: 100%;
+    max-width: 100%;
     height: max-content;
+    overflow: hidden;
 }
 
 .hidden-slide {

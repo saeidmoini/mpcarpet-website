@@ -23,9 +23,9 @@
         width: 2rem;
         height: 2rem;
     }
-    .swiper {
-        width: 100vw;
-    }
+}
+.swiper {
+    width: 100%;
 }
 </style>
 {% endblock %}
@@ -618,10 +618,21 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!gallerySection) return;
 
     const swiperContainer = gallerySection.querySelector(".tabcontent.active") || gallerySection.querySelector("#swiper1");
-    const slides = swiperContainer.querySelectorAll(".swiper-slide");
+    const slides = Array.from(swiperContainer.querySelectorAll(".swiper-slide"));
     let shownSlides = 0;
     let animationStarted = false;
     let sectionInView = false;
+
+    const getSlidesPerView = () => {
+        if (typeof swiper === "undefined" || !swiper.params) return 1;
+        const { currentBreakpoint, params } = swiper;
+        const bpSlides = currentBreakpoint && params.breakpoints
+            ? params.breakpoints[currentBreakpoint]?.slidesPerView
+            : undefined;
+        const baseSlides = params.slidesPerView;
+        const active = typeof bpSlides === "number" ? bpSlides : baseSlides;
+        return Math.max(1, typeof active === "number" ? active : 1);
+    };
 
     const resetSlides = () => {
         slides.forEach((slide) => {
@@ -640,13 +651,21 @@ document.addEventListener("DOMContentLoaded", () => {
     slides.forEach((slide) => slide.classList.add("hidden-slide"));
 
     const showNextSlide = () => {
-        if (shownSlides < slides.length) {
+        const revealTarget = Math.min(slides.length, getSlidesPerView());
+        if (shownSlides < revealTarget) {
             const slide = slides[shownSlides];
             slide.classList.add("show-slide");
             slide.classList.remove("hidden-slide");
             shownSlides++;
 
-            if (shownSlides === slides.length) {
+            if (shownSlides === revealTarget) {
+                slides.forEach((s, idx) => {
+                    if (idx >= revealTarget) {
+                        s.classList.add("show-slide");
+                        s.classList.remove("hidden-slide");
+                    }
+                });
+                shownSlides = slides.length;
                 unlockPageScroll();
             }
         }
