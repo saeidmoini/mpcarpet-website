@@ -540,68 +540,68 @@
   visibility: visible;
 }
 .map-pin#pinMashhad {
-  top: 19rem;
-  right: 19.8rem;
+  top: 26.48%;
+  right: 25.35%;
 }
 .map-pin#pinTehran {
-  top: 21rem;
-  right: 49.4rem;
+  top: 29.29%;
+  right: 63.26%;
 }
 .map-pin#pinEsfahan {
-  top: 32.5rem;
-  right: 48.5rem;
+  top: 45.34%;
+  right: 62.1%;
 }
 .map-pin#pinTabriz {
-  top: 8.5rem;
-  right: 68.5rem;
+  top: 11.85%;
+  right: 87.71%;
 }
 .map-pin#pinShiraz {
-  top: 47rem;
-  right: 40rem;
+  top: 65.55%;
+  right: 51.21%;
 }
 .map-pin#pinKerman {
-  top: 44rem;
-  right: 18rem;
+  top: 61.35%;
+  right: 23.05%;
 }
 .map-pin#pinKhuzestan {
-  top: 37rem;
-  right: 59rem;
+  top: 51.6%;
+  right: 75.54%;
 }
 .map-pin#pinBoroojen {
-  top: 35rem;
-  right: 52rem;
+  top: 48.81%;
+  right: 66.58%;
 }
 .map-pin#pinBandarAnzali {
-  top: 14rem;
-  right: 55rem;
+  top: 19.53%;
+  right: 70.42%;
 }
 .map-pin#pinBandarAbbas {
-  top: 60rem;
-  right: 29rem;
+  top: 83.68%;
+  right: 37.13%;
 }
 .map-pin#pinBirjand {
-  top: 32rem;
-  right: 20rem;
+  top: 44.63%;
+  right: 25.61%;
 }
 .map-pin#pinTaybaad {
-  top: 25rem;
-  right: 14rem;
+  top: 34.86%;
+  right: 17.91%;
 }
 .map-pin#pinChenaran {
-  top: 17rem;
-  right: 23rem;
+  top: 23.71%;
+  right: 29.45%;
 }
 .map-pin#pinForus {
-  top: 18rem;
-  right: 15rem;
+  top: 25.1%;
+  right: 19.21%;
 }
 .map-pin#pinKashmar {
-  top: 25rem;
-  right: 22rem;
+  top: 34.86%;
+  right: 28.16%;
 }
 .map-pin#pinGonabad {
-  top: 30rem;
-  right: 22rem;
+  top: 41.83%;
+  right: 28.16%;
 }
 
 .map-typo-art {
@@ -664,6 +664,15 @@
   .map-typo-art img {
     height: auto;
   }
+  .map {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 78.1/71.7;
+  }
+  .map-pin {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 @media (max-width: 479px) {
   .slider-container {
@@ -680,6 +689,30 @@
   }
   .city-list {
     width: 100%;
+  }
+  .city-item {
+    display: block !important;
+  }
+  .city-name {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    padding: 1.2rem 1.6rem;
+    width: 100%;
+    cursor: pointer;
+  }
+  .city {
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    height: 0;
+    transition: 0.3s all ease-in-out;
+    overflow: hidden;
+  }
+  .city.active {
+    padding: 1.6rem;
+    height: auto;
   }
   .gallery-title {
     margin: 0 1rem;

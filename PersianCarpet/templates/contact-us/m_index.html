@@ -185,8 +185,8 @@
                 </div>
                 <ul class="city-list">
                     <li class="city-item" id="cityItemMashhad">
-                        <span class="city-name active" id="cityNameMashhad">مشهد<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
-                        <ul class="city active" id="cityMashhad">
+                        <span class="city-name" id="cityNameMashhad">مشهد<span class="icon-arrow-left"><img src="{% static 'imgs/icons/arrow-left.svg' %}" alt="arrow left"></span></span>
+                        <ul class="city" id="cityMashhad">
                             <li class="title">فروشگاه‌ها</li>
                             <li>فروشگاه مرکزی | تلفن تماس: ۳۲۲۲۴۰۰۰-۰۵۱</li>
                             <li>فروشگاه پاداش | تلفن تماس: ۳۳۶۵۳۰۱۰-۰۵۱</li>
@@ -556,40 +556,112 @@
             'Gonabad': 'Gonabad'
         };
 
-        // Function to toggle a city's active state
-        function toggleCity(cityKey) {
+        let currentlyActiveCity = null;
+        
+        // Function to check if we're on a small screen (map is hidden)
+        function isSmallScreen() {
+            return window.matchMedia('(max-width: 479px)').matches;
+        }
+        
+        // Function to show all cities normally (for small screens)
+        function showAllCities() {
+            Object.keys(cityMapping).forEach(function(key) {
+                const item = document.getElementById('cityItem' + key);
+                if(item) item.style.display = 'block';
+            });
+        }
+
+        // Function to show only one city (for large screens with map)
+        function showCity(cityKey) {
+            // Hide all cities first
+            Object.keys(cityMapping).forEach(function(key) {
+                const span = document.getElementById('cityName' + key);
+                const cityList = document.getElementById('city' + key);
+                const item = document.getElementById('cityItem' + key);
+                
+                if(span) span.classList.remove('active');
+                if(cityList) cityList.classList.remove('active');
+                if(item) item.style.display = 'none';
+            });
+            
+            // Show the selected city
             const spanId = 'cityName' + cityKey;
             const cityId = 'city' + cityKey;
+            const itemId = 'cityItem' + cityKey;
             
             const span = document.getElementById(spanId);
             const cityList = document.getElementById(cityId);
+            const item = document.getElementById(itemId);
             
-            if(span && cityList) {
-                span.classList.toggle('active');
-                cityList.classList.toggle('active');
-            }
+            if(span) span.classList.add('active');
+            if(cityList) cityList.classList.add('active');
+            if(item) item.style.display = 'block';
+            
+            currentlyActiveCity = cityKey;
         }
 
-        // Handle city name span clicks
+        // Handle city name span clicks - toggle between showing/hiding
         const cityNames = document.querySelectorAll('.city-name');
         cityNames.forEach(function(cityName){
             cityName.addEventListener('click', function(){
                 const parentItem = cityName.closest('.city-item');
-                const cityList = parentItem.querySelector('.city');
-                if(cityList){
-                    cityList.classList.toggle('active');
-                    cityName.classList.toggle('active');
+                const itemId = parentItem ? parentItem.id : null;
+                
+                if(itemId) {
+                    const cityKey = itemId.replace('cityItem', '');
+                    
+                    // On small screens, just toggle the list
+                    if(isSmallScreen()) {
+                        const cityList = parentItem.querySelector('.city');
+                        if(cityList) {
+                            cityList.classList.toggle('active');
+                            cityName.classList.toggle('active');
+                        }
+                    } else {
+                        // On large screens, hide other cities
+                        // If clicking the already active city, hide it
+                        if(currentlyActiveCity === cityKey) {
+                            cityName.classList.remove('active');
+                            const cityList = parentItem.querySelector('.city');
+                            if(cityList) cityList.classList.remove('active');
+                            parentItem.style.display = 'none';
+                            currentlyActiveCity = null;
+                        } else {
+                            // Otherwise show the new city
+                            showCity(cityKey);
+                        }
+                    }
                 }
             });
         });
 
-        // Handle map pin clicks
+        // Handle map pin clicks - show the city (only on large screens)
         Object.keys(cityMapping).forEach(function(cityKey) {
             const pin = document.getElementById('pin' + cityKey);
             if(pin) {
                 pin.addEventListener('click', function(){
-                    toggleCity(cityKey);
+                    if(!isSmallScreen()) {
+                        showCity(cityKey);
+                    }
                 });
+            }
+        });
+
+        // Initialize based on screen size
+        if(isSmallScreen()) {
+            showAllCities();
+        } else {
+            // Hide all cities initially on large screens
+            Object.keys(cityMapping).forEach(function(key) {
+                const item = document.getElementById('cityItem' + key);
+                if(item) item.style.display = 'none';
+            });
+        }
+        
+        // Update on window resize
+        window.addEventListener('resize', function() {
+            if(isSmallScreen()) {
+                showAllCities();
             }
         });
     })();
